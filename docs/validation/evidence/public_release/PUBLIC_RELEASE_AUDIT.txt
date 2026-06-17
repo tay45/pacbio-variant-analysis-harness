@@ -1,7 +1,7 @@
 Public release privacy and IP audit
 status=PASS
 
-files_checked=409
+files_checked=410
 scan_categories=institution-name pattern: [REDACTED], legacy-cluster-name pattern: [REDACTED], internal-host pattern: [REDACTED], internal-path pattern A: [REDACTED], internal-path pattern B: [REDACTED], private-key marker: [REDACTED], cloud-secret marker: [REDACTED], api-key marker: [REDACTED], token marker: [REDACTED], password marker: [REDACTED], local-home-path pattern: [REDACTED], local-project-path pattern: [REDACTED]
 actions=Excluded institution-specific legacy code; retained legacy placeholder only.
 exclusions=Generated work/output folders, caches, prior archives, sequencing/reference/container data.
