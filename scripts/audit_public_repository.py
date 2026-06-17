@@ -128,6 +128,8 @@ def audit_package(root: Path = ROOT) -> list[str]:
     errors.extend(f"missing root directory: {item}" for item in missing_dirs)
     for path in root.rglob("*"):
         rel = path.relative_to(root)
+        if ".git" in rel.parts:
+            continue
         if any(part in FORBIDDEN_DIRS for part in rel.parts):
             errors.append(f"forbidden directory entry: {rel}")
         if path.is_file() and (path.name == ".DS_Store" or path.suffix.lower() in FORBIDDEN_SUFFIXES):
