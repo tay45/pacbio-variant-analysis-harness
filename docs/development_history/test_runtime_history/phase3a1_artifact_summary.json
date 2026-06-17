@@ -1,0 +1,60 @@
+[
+  {
+    "artifact": "docs/validation/evidence/test_summaries/TEST_RESULTS.txt",
+    "duration_seconds": 23.71,
+    "exit_code": 0
+  },
+  {
+    "artifact": "docs/validation/evidence/test_summaries/TEST_DURATION_REPORT.txt",
+    "duration_seconds": 23.87,
+    "exit_code": 0
+  },
+  {
+    "artifact": "docs/validation/evidence/public_release/PHASE_3A1_ROOT_PRESENTATION_TEST_RESULTS.txt",
+    "duration_seconds": 0.45,
+    "exit_code": 0
+  },
+  {
+    "artifact": "docs/validation/evidence/public_release/PHASE_3A1_PUBLIC_PACKAGE_TEST_RESULTS.txt",
+    "duration_seconds": 2.48,
+    "exit_code": 0
+  },
+  {
+    "artifact": "docs/validation/evidence/test_summaries/PYTEST_EXIT_VERIFICATION.txt",
+    "duration_seconds": 1.48,
+    "exit_code": 0
+  },
+  {
+    "artifact": "docs/validation/evidence/test_summaries/PYTEST_FULL_EXIT_VERIFICATION.txt",
+    "duration_seconds": 24.59,
+    "exit_code": 0
+  },
+  {
+    "artifact": "docs/validation/evidence/test_summaries/PYTEST_RESOLUTION_CHECK.txt",
+    "exit_code": 0
+  },
+  {
+    "artifact": "docs/validation/evidence/public_release/NETWORK_ISOLATION_TEST.txt",
+    "duration_seconds": 0.81,
+    "exit_code": 0
+  },
+  {
+    "artifact": "docs/validation/evidence/public_release/PORTABILITY_SCAN.txt",
+    "status": "PASS"
+  },
+  {
+    "artifact": "docs/validation/evidence/public_release/PUBLIC_PACKAGE_AUDIT.txt",
+    "exit_code": 0
+  },
+  {
+    "artifact": "docs/validation/evidence/public_release/REVIEW_MANIFEST.txt"
+  },
+  {
+    "artifact": "docs/validation/evidence/public_release/PHASE_3A1_PATH_MIGRATION_AUDIT.txt",
+    "status": "PASS"
+  },
+  {
+    "artifact": "docs/validation/evidence/public_release/PHASE_3A1_FINAL_ROOT_AUDIT.txt",
+    "status": "PASS"
+  }
+]

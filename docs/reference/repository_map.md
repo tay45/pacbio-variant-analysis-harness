@@ -12,3 +12,7 @@
 | `docs/` | User, architecture, validation, portfolio, operations, and history documentation. |
 | `legacy/` | Public placeholder explaining excluded institution-specific legacy material. |
 | `.github/` | CI workflow, issue templates, and PR template. |
+
+| `docs/validation/evidence/` | Current and historical software, packaging, and public-release verification evidence. |
+| `docs/development_history/packaging/` | Public packaging and identity-correction history. |
+| `docs/operations/github/` | Safe GitHub publishing and repository-settings notes. |

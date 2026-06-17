@@ -1,7 +1,0 @@
-Phase 3A.0.2 portability scan
-status=PASS
-active_forbidden_matches=0
-identity=PacBio public repository identity
-
-## Findings
-None

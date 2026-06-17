@@ -1,0 +1,14 @@
+PacBio Variant Analysis Harness Main-Branch Review Manifest
+
+Package version: 0.2.7a1
+Release tag preserved: v0.2.7-alpha.1
+Main-branch cleanup: Phase 3A.1
+Test result summary: 254 passed in 23.25s
+Research-use status: research-use only; no clinical, diagnostic, treatment-decision, or regulatory validation is claimed.
+
+Presentation cleanup:
+- Root contains high-signal public files only.
+- Validation evidence moved to docs/validation/evidence/.
+- Packaging history moved to docs/development_history/packaging/.
+- GitHub operations moved to docs/operations/github/.
+- Existing release tag and release assets were not modified.

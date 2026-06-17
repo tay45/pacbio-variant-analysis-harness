@@ -28,11 +28,7 @@ REQUIRED_ROOT = {
     "README.md", "LICENSE", "CITATION.cff", "CONTRIBUTING.md", "CODE_OF_CONDUCT.md",
     "SECURITY.md", "CHANGELOG.md", "RELEASE_NOTES.md", "ROADMAP.md", "pyproject.toml",
     ".gitignore", ".gitattributes", ".pre-commit-config.yaml", "Makefile",
-    "REVIEW_MANIFEST.txt", "PORTABILITY_SCAN.txt", "PUBLIC_RELEASE_AUDIT.txt",
-    "PUBLIC_PACKAGE_AUDIT.txt", "DOCUMENTATION_LINK_AUDIT.txt", "THIRD_PARTY_NOTICES.md",
-    "GITHUB_REPOSITORY_SETTINGS.md", "GITHUB_PUBLISHING_INSTRUCTIONS.md",
-    "TEST_RESULTS.txt", "TEST_DURATION_REPORT.txt", "PYTEST_EXIT_VERIFICATION.txt",
-    "PYTEST_FULL_EXIT_VERIFICATION.txt", "PYTEST_RESOLUTION_CHECK.txt", "NETWORK_ISOLATION_TEST.txt",
+    "THIRD_PARTY_NOTICES.md",
 }
 REQUIRED_DIRS = {
     ".github", "configs", "contracts", "docs", "examples", "schemas", "scripts",
@@ -59,7 +55,24 @@ REQUIRED_DOCS = [
     "docs/reference/repository_map.md", "docs/portfolio/portfolio_overview.md",
     "docs/portfolio/sample_reports.md", "docs/validation/claims_audit.md",
     "docs/validation/validation_matrix.md", "docs/development_history/README.md",
+    "docs/validation/evidence/README.md", "docs/development_history/packaging/README.md",
+    "docs/operations/github/README.md", "docs/operations/github/publishing_instructions.md",
+    "docs/operations/github/repository_settings.md",
 ]
+REQUIRED_EVIDENCE = [
+    "docs/validation/evidence/test_summaries/TEST_RESULTS.txt",
+    "docs/validation/evidence/test_summaries/TEST_DURATION_REPORT.txt",
+    "docs/validation/evidence/test_summaries/PYTEST_EXIT_VERIFICATION.txt",
+    "docs/validation/evidence/test_summaries/PYTEST_FULL_EXIT_VERIFICATION.txt",
+    "docs/validation/evidence/test_summaries/PYTEST_RESOLUTION_CHECK.txt",
+    "docs/validation/evidence/public_release/NETWORK_ISOLATION_TEST.txt",
+    "docs/validation/evidence/public_release/PORTABILITY_SCAN.txt",
+    "docs/validation/evidence/public_release/PUBLIC_RELEASE_AUDIT.txt",
+    "docs/validation/evidence/public_release/PUBLIC_PACKAGE_AUDIT.txt",
+    "docs/validation/evidence/public_release/DOCUMENTATION_LINK_AUDIT.txt",
+    "docs/validation/evidence/public_release/REVIEW_MANIFEST.txt",
+]
+ROOT_ARTIFACT_PREFIXES = ("PHASE_", "TEST_", "PYTEST_", "PUBLIC_", "DOCUMENTATION_LINK_", "NETWORK_ISOLATION", "PORTABILITY_SCAN", "REVIEW_MANIFEST", "SCALE_TEST", "JOINT_SCALE")
 
 def iter_files(root: Path = ROOT):
     for path in root.rglob("*"):
@@ -122,16 +135,22 @@ def audit_package(root: Path = ROOT) -> list[str]:
     for doc in REQUIRED_DOCS:
         if not (root / doc).exists():
             errors.append(f"missing required doc: {doc}")
+    for evidence in REQUIRED_EVIDENCE:
+        if not (root / evidence).exists():
+            errors.append(f"missing validation evidence: {evidence}")
+    for item in root.iterdir():
+        if item.is_file() and item.name.startswith(ROOT_ARTIFACT_PREFIXES):
+            errors.append(f"root-level evidence or phase artifact: {item.name}")
     version_text = (root / "pyproject.toml").read_text(encoding="utf-8") + "\n" + (root / "variant_analysis_harness" / "__init__.py").read_text(encoding="utf-8")
     if VERSION not in version_text:
         errors.append("package code version mismatch")
-    for file_name in ("CITATION.cff", "RELEASE_NOTES.md", "CHANGELOG.md", "GITHUB_REPOSITORY_SETTINGS.md", "GITHUB_PUBLISHING_INSTRUCTIONS.md"):
+    for file_name in ("CITATION.cff", "RELEASE_NOTES.md", "CHANGELOG.md", "docs/operations/github/repository_settings.md", "docs/operations/github/publishing_instructions.md"):
         if TAG not in (root / file_name).read_text(encoding="utf-8"):
             errors.append(f"release tag missing from {file_name}")
     readme = (root / "README.md").read_text(encoding="utf-8")
     citation = (root / "CITATION.cff").read_text(encoding="utf-8")
-    settings = (root / "GITHUB_REPOSITORY_SETTINGS.md").read_text(encoding="utf-8")
-    publishing = (root / "GITHUB_PUBLISHING_INSTRUCTIONS.md").read_text(encoding="utf-8")
+    settings = (root / "docs/operations/github/repository_settings.md").read_text(encoding="utf-8")
+    publishing = (root / "docs/operations/github/publishing_instructions.md").read_text(encoding="utf-8")
     if not readme.startswith(f"# {PUBLIC_TITLE}"):
         errors.append("README title mismatch")
     if "Illumina and Oxford Nanopore workflows are not implemented or validated in this release." not in readme:
@@ -177,13 +196,16 @@ def main(argv: list[str] | None = None) -> int:
     checked_privacy, privacy_findings = audit_privacy()
     package_errors = audit_package()
 
-    write_report(ROOT / "DOCUMENTATION_LINK_AUDIT.txt", "Documentation link audit", "PASS" if not broken_links else "FAIL", [
+    evidence_dir = ROOT / "docs" / "validation" / "evidence"
+    public_dir = evidence_dir / "public_release"
+    public_dir.mkdir(parents=True, exist_ok=True)
+    write_report(public_dir / "DOCUMENTATION_LINK_AUDIT.txt", "Documentation link audit", "PASS" if not broken_links else "FAIL", [
         f"files_checked={sum(1 for p in iter_files() if p.suffix.lower() == '.md')}",
         f"links_checked={len(checked_links)}",
         "## Broken links",
         *(broken_links or ["None"]),
     ])
-    write_report(ROOT / "PUBLIC_RELEASE_AUDIT.txt", "Public release privacy and IP audit", "PASS" if not privacy_findings else "FAIL", [
+    write_report(public_dir / "PUBLIC_RELEASE_AUDIT.txt", "Public release privacy and IP audit", "PASS" if not privacy_findings else "FAIL", [
         f"files_checked={len(checked_privacy)}",
         "scan_categories=" + ", ".join(pattern["label"] + ": [REDACTED]" for pattern in PRIVATE_PATTERNS),
         "actions=Excluded institution-specific legacy code; retained legacy placeholder only.",
@@ -192,7 +214,7 @@ def main(argv: list[str] | None = None) -> int:
         "## Findings",
         *(privacy_findings or ["None"]),
     ])
-    write_report(ROOT / "PUBLIC_PACKAGE_AUDIT.txt", "Public package audit", "PASS" if not package_errors and not broken_links and not privacy_findings else "FAIL", [
+    write_report(public_dir / "PUBLIC_PACKAGE_AUDIT.txt", "Public package audit", "PASS" if not package_errors and not broken_links and not privacy_findings else "FAIL", [
         f"required_root_files={len(REQUIRED_ROOT)}",
         f"required_directories={len(REQUIRED_DIRS)}",
         f"version={VERSION}",

@@ -114,6 +114,11 @@ python scripts/verify_pytest_exit.py
 python scripts/audit_public_repository.py
 ```
 
+
+## Verification Evidence
+
+Detailed test, scale, portability, network-isolation, caller-contract, and public-release evidence is archived under [`docs/validation/evidence/`](docs/validation/evidence/). These artifacts validate software behavior and packaging hygiene; they do not establish biological accuracy or clinical readiness.
+
 ## What Has Been Tested
 
 - Configuration and manifest validation.

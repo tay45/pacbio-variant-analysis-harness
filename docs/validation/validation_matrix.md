@@ -17,3 +17,6 @@
 | Provenance | Yes | Yes | Yes | Yes | No | No | No | No | Structured records and output manifests. |
 | 3,000-sample planning | Yes | Yes | Yes | Yes | No | No | No | No | Synthetic only. |
 | 3,000-pair planning | Yes | Yes | Yes | Yes | No | No | No | No | Synthetic only. |
+
+
+See the [validation evidence index](evidence/README.md) for current software and packaging verification artifacts.

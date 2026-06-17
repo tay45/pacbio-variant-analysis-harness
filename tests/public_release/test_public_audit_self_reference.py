@@ -46,16 +46,16 @@ def test_no_prohibited_term_appears_contiguously_in_active_public_files():
 
 def test_public_audit_artifacts_use_redacted_labels():
     artifact_paths = [
-        ROOT / "PUBLIC_RELEASE_AUDIT.txt",
-        ROOT / "PUBLIC_PACKAGE_AUDIT.txt",
-        ROOT / "PORTABILITY_SCAN.txt",
-        ROOT / "DOCUMENTATION_LINK_AUDIT.txt",
+        ROOT / "docs" / "validation" / "evidence" / "public_release" / "PUBLIC_RELEASE_AUDIT.txt",
+        ROOT / "docs" / "validation" / "evidence" / "public_release" / "PUBLIC_PACKAGE_AUDIT.txt",
+        ROOT / "docs" / "validation" / "evidence" / "public_release" / "PORTABILITY_SCAN.txt",
+        ROOT / "docs" / "validation" / "evidence" / "public_release" / "DOCUMENTATION_LINK_AUDIT.txt",
     ]
     for path in artifact_paths:
         text = path.read_text(encoding="utf-8", errors="ignore")
         for term in _terms():
             assert term not in text
-    assert "[REDACTED]" in (ROOT / "PUBLIC_RELEASE_AUDIT.txt").read_text(encoding="utf-8", errors="ignore")
+    assert "[REDACTED]" in (ROOT / "docs" / "validation" / "evidence" / "public_release" / "PUBLIC_RELEASE_AUDIT.txt").read_text(encoding="utf-8", errors="ignore")
 
 
 def test_scanner_comments_and_docstrings_do_not_leak_terms():

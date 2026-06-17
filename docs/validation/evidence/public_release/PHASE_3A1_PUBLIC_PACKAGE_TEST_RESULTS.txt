@@ -1,0 +1,11 @@
+$ <python> scripts/run_tests.py -q -k public_release or repository_identity or root_presentation or package_audit or portability
+exit_code=0
+duration_seconds=2.48
+
+STDOUT
+................................                                         [100%]
+32 passed, 222 deselected in 2.09s
+
+STDERR
+Hermetic pytest: PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+

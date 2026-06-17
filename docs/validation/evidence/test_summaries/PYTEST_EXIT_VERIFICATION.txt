@@ -1,11 +1,11 @@
 $ <python> scripts/verify_pytest_exit.py
 exit_code=0
-duration_seconds=1.50
+duration_seconds=1.48
 
 STDOUT
 command=<python> <repo>/scripts/run_tests.py -q tests/smoke/test_exit_smoke_subset.py
 return_code=0
-elapsed_seconds=1.410
+elapsed_seconds=1.396
 timeout_seconds=30.000
 timeout=False
 process_exited=True

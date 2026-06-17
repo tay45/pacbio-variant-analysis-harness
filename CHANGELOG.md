@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+### Documentation
+
+- Reorganized validation evidence and packaging history under `docs/`.
+- Simplified the repository root for faster technical and recruiter review.
+- Updated documentation indexes and public-package audits after file relocation.
+
+
 ## v0.2.7-alpha.1 - Prepared For Public Alpha Packaging
 
 - Added public GitHub packaging, repository hygiene, metadata, audits, and recruiter-first documentation.

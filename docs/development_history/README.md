@@ -23,3 +23,7 @@ The current release status is public alpha packaging for tag
 `v0.2.7-alpha.1`.
 
 The public repository identity was finalized as PacBio Variant Analysis Harness under Tay45/pacbio-variant-analysis-harness. Earlier proposed public names were superseded before publication.
+
+## Packaging History
+
+Public packaging and repository presentation records are preserved in [packaging/](packaging/README.md).

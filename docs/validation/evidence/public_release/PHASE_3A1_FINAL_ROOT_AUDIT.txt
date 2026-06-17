@@ -1,0 +1,52 @@
+Phase 3A.1 final root audit
+status=PASS
+
+## Final root files
+.gitattributes
+.gitignore
+.pre-commit-config.yaml
+CHANGELOG.md
+CITATION.cff
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
+LICENSE
+Makefile
+README.md
+RELEASE_NOTES.md
+ROADMAP.md
+SECURITY.md
+THIRD_PARTY_NOTICES.md
+pyproject.toml
+
+## Final root directories
+.github
+configs
+contracts
+docs
+examples
+legacy
+schemas
+scripts
+tests
+variant_analysis_harness
+
+## Files moved
+Evidence, packaging plans, GitHub setup docs, and review manifests moved under docs/.
+
+## Files deleted as exact duplicates
+None
+
+## Evidence preservation result
+PASS
+
+## Link result
+PASS
+
+## Test result
+254 passed in 23.25s
+
+## Audit result
+PASS
+
+## Unexpected root files
+None

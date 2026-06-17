@@ -1,0 +1,28 @@
+$ <python> scripts/verify_pytest_exit.py --full
+exit_code=0
+duration_seconds=24.59
+
+STDOUT
+command=<python> <repo>/scripts/run_tests.py -q
+return_code=0
+elapsed_seconds=24.493
+timeout_seconds=180.000
+timeout=False
+process_exited=True
+summary_to_exit_seconds=0.0
+success_summary=254 passed in 24.04s
+summary_printed=True
+clean_exit=True
+--- stdout ---
+........................................................................ [ 28%]
+........................................................................ [ 56%]
+........................................................................ [ 85%]
+......................................                                   [100%]
+254 passed in 24.04s
+
+--- stderr ---
+Hermetic pytest: PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+
+
+STDERR
+

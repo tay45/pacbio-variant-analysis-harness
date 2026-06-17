@@ -11,3 +11,6 @@ results.
 - [Integrated somatic report](../../examples/reports/integrated_somatic_report.example.md)
 - [Integrated operator report](../../examples/reports/integrated_operator_report.example.md)
 - [Integrated recruiter summary](../../examples/reports/integrated_recruiter_summary.example.md)
+
+
+See the [validation evidence index](../validation/evidence/README.md) for current software and packaging verification artifacts.

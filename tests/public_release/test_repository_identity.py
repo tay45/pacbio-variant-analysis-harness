@@ -41,7 +41,7 @@ def test_readme_title_and_repository_url():
 
 
 def test_clone_url_is_correct():
-    assert CLONE_URL in _text("GITHUB_PUBLISHING_INSTRUCTIONS.md")
+    assert CLONE_URL in _text("docs/operations/github/publishing_instructions.md")
 
 
 def test_citation_identity_is_correct():
@@ -52,14 +52,14 @@ def test_citation_identity_is_correct():
 
 
 def test_github_settings_identity_is_correct():
-    settings = _text("GITHUB_REPOSITORY_SETTINGS.md")
+    settings = _text("docs/operations/github/repository_settings.md")
     assert OWNER in settings
     assert REPO in settings
     assert "Research-use PacBio variant-analysis orchestration" in settings
 
 
 def test_publishing_instructions_use_correct_remote():
-    instructions = _text("GITHUB_PUBLISHING_INSTRUCTIONS.md")
+    instructions = _text("docs/operations/github/publishing_instructions.md")
     assert f"git remote add origin {CLONE_URL}" in instructions
     assert "git status" in instructions
 

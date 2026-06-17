@@ -34,11 +34,13 @@
 - [Slurm arrays](slurm_arrays.md)
 - [Storage and scratch](storage_and_scratch.md)
 - [Troubleshooting](troubleshooting.md)
+- [GitHub operations](operations/github/README.md)
 
 ## Validation
 
 - [Claims audit](validation/claims_audit.md)
 - [Validation matrix](validation/validation_matrix.md)
+- [Validation evidence](validation/evidence/README.md)
 - [QC](qc.md)
 - [Testing](testing.md)
 - [Research use only](research_use_only.md)
@@ -54,6 +56,7 @@
 - [Phase plans](development_history/phase_plans/)
 - [Defect reports](development_history/defect_reports/)
 - [Test runtime history](development_history/test_runtime_history/)
+- [Packaging history](development_history/packaging/README.md)
 
 ## Reference
 

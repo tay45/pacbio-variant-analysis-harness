@@ -17,3 +17,6 @@
 
 The public README and release notes use "validated" only with a software,
 mocked, synthetic, schema, or contract scope.
+
+
+See the [validation evidence index](evidence/README.md) for current software and packaging verification artifacts.

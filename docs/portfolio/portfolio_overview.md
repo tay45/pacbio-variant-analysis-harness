@@ -30,3 +30,6 @@ artifacts, and honest reporting.
 Testing is synthetic and mocked unless otherwise stated. The repository
 does not claim biological benchmarking, clinical readiness, diagnostic
 use, treatment relevance, production deployment, CNV, or annotation.
+
+
+See the [validation evidence index](../validation/evidence/README.md) for current software and packaging verification artifacts.

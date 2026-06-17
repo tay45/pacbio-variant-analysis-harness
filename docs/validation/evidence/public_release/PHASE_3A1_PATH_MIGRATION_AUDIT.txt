@@ -1,0 +1,26 @@
+Phase 3A.1 path migration audit
+status=PASS
+
+## Moved files
+- TEST_RESULTS.txt -> docs/validation/evidence/test_summaries/TEST_RESULTS.txt
+- TEST_DURATION_REPORT.txt -> docs/validation/evidence/test_summaries/TEST_DURATION_REPORT.txt
+- PYTEST_EXIT_VERIFICATION.txt -> docs/validation/evidence/test_summaries/PYTEST_EXIT_VERIFICATION.txt
+- PYTEST_FULL_EXIT_VERIFICATION.txt -> docs/validation/evidence/test_summaries/PYTEST_FULL_EXIT_VERIFICATION.txt
+- PYTEST_RESOLUTION_CHECK.txt -> docs/validation/evidence/test_summaries/PYTEST_RESOLUTION_CHECK.txt
+- NETWORK_ISOLATION_TEST.txt -> docs/validation/evidence/public_release/NETWORK_ISOLATION_TEST.txt
+- PORTABILITY_SCAN.txt -> docs/validation/evidence/public_release/PORTABILITY_SCAN.txt
+- PUBLIC_RELEASE_AUDIT.txt -> docs/validation/evidence/public_release/PUBLIC_RELEASE_AUDIT.txt
+- PUBLIC_PACKAGE_AUDIT.txt -> docs/validation/evidence/public_release/PUBLIC_PACKAGE_AUDIT.txt
+- DOCUMENTATION_LINK_AUDIT.txt -> docs/validation/evidence/public_release/DOCUMENTATION_LINK_AUDIT.txt
+- REVIEW_MANIFEST.txt -> docs/validation/evidence/public_release/REVIEW_MANIFEST.txt
+- GITHUB_PUBLISHING_INSTRUCTIONS.md -> docs/operations/github/publishing_instructions.md
+- GITHUB_REPOSITORY_SETTINGS.md -> docs/operations/github/repository_settings.md
+
+## References updated
+README, docs index, repository map, development history, public-release tests, and public audit logic.
+
+## Unresolved old paths
+None
+
+## Missing new paths
+None

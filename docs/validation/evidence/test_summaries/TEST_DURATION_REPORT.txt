@@ -1,0 +1,103 @@
+$ <python> scripts/run_tests.py --durations=30
+exit_code=0
+duration_seconds=23.87
+
+STDOUT
+============================= test session starts ==============================
+platform darwin -- Python 3.12.5, pytest-9.1.0, pluggy-1.6.0
+rootdir: <repo>
+configfile: pyproject.toml
+testpaths: tests
+collected 254 items
+
+tests/contracts/test_severus_official_cli_contract.py .....              [  1%]
+tests/contracts/test_severus_official_output_contract.py ....            [  3%]
+tests/integration/test_cli_mocked.py ....                                [  5%]
+tests/integration/test_deepsomatic_mocked.py ...                         [  6%]
+tests/integration/test_integrated_somatic_mocked.py ..                   [  7%]
+tests/integration/test_severus_mocked.py ...                             [  8%]
+tests/performance/test_integrated_relationship_index.py .                [  8%]
+tests/public_release/test_public_audit_self_reference.py ..........      [ 12%]
+tests/public_release/test_repository_identity.py ............            [ 17%]
+tests/public_release/test_root_presentation.py .......                   [ 20%]
+tests/scale/test_3000_pair_deepsomatic_planning.py .                     [ 20%]
+tests/scale/test_3000_pair_integrated_somatic_reporting.py .             [ 20%]
+tests/scale/test_3000_pair_severus_planning.py .                         [ 21%]
+tests/scale/test_3000_pair_somatic_planning.py .                         [ 21%]
+tests/scale/test_3000_sample_joint_planning.py .                         [ 22%]
+tests/scale/test_3000_sample_planning.py .                               [ 22%]
+tests/smoke/test_exit_smoke_subset.py ...                                [ 23%]
+tests/unit/test_cohort_manifest.py ......                                [ 25%]
+tests/unit/test_cohort_planning.py ...                                   [ 27%]
+tests/unit/test_cohort_recovery_incremental.py ...                       [ 28%]
+tests/unit/test_cohort_slurm_status.py ..                                [ 29%]
+tests/unit/test_cohort_storage_scratch.py .........                      [ 32%]
+tests/unit/test_commands_qc.py .....                                     [ 34%]
+tests/unit/test_config_manifest.py .......                               [ 37%]
+tests/unit/test_deepsomatic_commands.py ....                             [ 38%]
+tests/unit/test_deepsomatic_config.py ......                             [ 41%]
+tests/unit/test_deepsomatic_output_validation.py ...                     [ 42%]
+tests/unit/test_deepsomatic_preflight.py ..                              [ 43%]
+tests/unit/test_deepsomatic_qc.py .                                      [ 43%]
+tests/unit/test_hermetic_pytest.py ...................                   [ 51%]
+tests/unit/test_integrated_somatic_compatibility.py .                    [ 51%]
+tests/unit/test_integrated_somatic_config.py ..                          [ 52%]
+tests/unit/test_integrated_somatic_qc.py .                               [ 52%]
+tests/unit/test_integrated_somatic_relationships.py .                    [ 53%]
+tests/unit/test_integrated_somatic_reports.py .                          [ 53%]
+tests/unit/test_integrated_somatic_rerun.py .                            [ 53%]
+tests/unit/test_integrated_somatic_source_selection.py ...               [ 55%]
+tests/unit/test_integrated_somatic_status.py ..                          [ 55%]
+tests/unit/test_joint_genotyping.py ..........                           [ 59%]
+tests/unit/test_phase2a1_hardening.py .................................. [ 73%]
+.................                                                        [ 79%]
+tests/unit/test_public_repository_packaging.py ....                      [ 81%]
+tests/unit/test_safety_slurm_portability.py ...                          [ 82%]
+tests/unit/test_severus_bnd_validation.py ..                             [ 83%]
+tests/unit/test_severus_commands.py ....                                 [ 85%]
+tests/unit/test_severus_config.py .....                                  [ 87%]
+tests/unit/test_severus_output_discovery.py ..                           [ 87%]
+tests/unit/test_severus_phasing.py ...                                   [ 88%]
+tests/unit/test_severus_preflight.py ..                                  [ 89%]
+tests/unit/test_severus_qc.py .                                          [ 90%]
+tests/unit/test_severus_vcf_validation.py ..                             [ 90%]
+tests/unit/test_somatic_manifest_pairing.py ..........                   [ 94%]
+tests/unit/test_somatic_planning_status_reporting.py .....               [ 96%]
+tests/unit/test_somatic_preflight.py ........                            [100%]
+
+============================= slowest 30 durations =============================
+3.46s call     tests/integration/test_cli_mocked.py::test_resume_skips_successful_stage
+3.24s call     tests/integration/test_cli_mocked.py::test_combined_mock_run
+3.22s call     tests/integration/test_cli_mocked.py::test_mock_failure_blocks_downstream
+2.63s call     tests/scale/test_3000_sample_planning.py::test_3000_sample_planning
+1.71s call     tests/scale/test_3000_pair_severus_planning.py::test_3000_pair_severus_planning_is_stable
+1.63s call     tests/scale/test_3000_pair_deepsomatic_planning.py::test_3000_pair_deepsomatic_planning
+1.15s call     tests/scale/test_3000_pair_somatic_planning.py::test_3000_pair_somatic_planning
+0.46s call     tests/unit/test_phase2a1_hardening.py::test_bam_validation_missing_index
+0.45s call     tests/unit/test_phase2a1_hardening.py::test_bam_validation_with_mock_samtools
+0.44s call     tests/scale/test_3000_sample_joint_planning.py::test_3000_sample_joint_planning
+0.44s call     tests/unit/test_phase2a1_hardening.py::test_pbi_independent_of_bai
+0.42s call     tests/scale/test_3000_pair_integrated_somatic_reporting.py::test_3000_pair_integrated_reporting_is_deterministic_and_isolates_failures
+0.40s call     tests/unit/test_phase2a1_hardening.py::test_bam_index_stale_warning
+0.19s call     tests/public_release/test_repository_identity.py::test_public_audit_checks_repository_identity
+0.16s call     tests/integration/test_integrated_somatic_mocked.py::test_integrated_cli_generates_status_report_and_rerun_outputs
+0.15s call     tests/integration/test_deepsomatic_mocked.py::test_cli_plan_slurm_rerun_report
+0.14s call     tests/integration/test_severus_mocked.py::test_cli_plan_slurm_rerun_report
+0.14s call     tests/integration/test_cli_mocked.py::test_dry_run_modes
+0.12s call     tests/unit/test_somatic_planning_status_reporting.py::test_somatic_cli_plan_status_rerun_report
+0.10s call     tests/public_release/test_public_audit_self_reference.py::test_no_prohibited_term_appears_contiguously_in_active_public_files
+0.09s call     tests/public_release/test_repository_identity.py::test_no_active_public_file_contains_obsolete_slug_or_owner
+0.09s call     tests/public_release/test_repository_identity.py::test_no_active_public_branding_contains_standalone_obsolete_prefix
+0.09s call     tests/unit/test_phase2a1_hardening.py::test_force_preserves_prior_attempt
+0.08s call     tests/unit/test_phase2a1_hardening.py::test_attempt_collision_rejected
+0.06s call     tests/unit/test_cohort_slurm_status.py::test_cohort_slurm_array_script
+0.05s call     tests/unit/test_joint_genotyping.py::test_joint_cli_plan
+0.05s call     tests/unit/test_cohort_planning.py::test_cohort_plan_cli_creates_artifacts
+0.04s call     tests/unit/test_phase2a1_hardening.py::test_slurm_generates_full_workflow
+0.03s call     tests/unit/test_phase2a1_hardening.py::test_concurrent_attempt_collision_message
+0.03s call     tests/unit/test_somatic_planning_status_reporting.py::test_somatic_validate_returns_nonzero_on_validation_error
+============================= 254 passed in 23.43s =============================
+
+STDERR
+Hermetic pytest: PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+
