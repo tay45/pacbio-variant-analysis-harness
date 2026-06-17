@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Sample Manifest TSV Columns",
+  "type": "object",
+  "required": [
+    "sample_id",
+    "platform",
+    "input_type",
+    "input_path",
+    "additional_inputs",
+    "aligned",
+    "reference_id",
+    "read_group_sample",
+    "output_prefix"
+  ],
+  "properties": {
+    "sample_id": {"type": "string", "pattern": "^[A-Za-z0-9_.-]+$"},
+    "platform": {"enum": ["pacbio_hifi"]},
+    "input_type": {
+      "enum": [
+        "aligned_bam",
+        "unaligned_bam",
+        "pacbio_dataset_xml",
+        "pacbio_dataset_xml_list"
+      ]
+    },
+    "input_path": {"type": "string"},
+    "additional_inputs": {"type": "string"},
+    "aligned": {"enum": ["true", "false", "yes", "no", "1", "0"]},
+    "reference_id": {"type": "string"},
+    "read_group_sample": {"type": "string"},
+    "output_prefix": {"type": "string"}
+  }
+}

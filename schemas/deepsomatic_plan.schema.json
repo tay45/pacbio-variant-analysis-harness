@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "deepsomatic_plan.schema.json",
+  "title": "Phase 2E DeepSomatic Plan",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["backend", "pairs", "commands", "pair_statuses", "research_use_only"],
+  "properties": {
+    "backend": {"const": "deepsomatic"},
+    "pairs": {"type": "array"},
+    "commands": {"type": "array"},
+    "pair_statuses": {"type": "array"},
+    "research_use_only": {"const": true}
+  }
+}

@@ -1,0 +1,55 @@
+somatic:
+  enabled: true
+  mode: tumor_normal
+  tumor_only:
+    allowed: false
+    acknowledgment_required: true
+  small_variants:
+    enabled: true
+    backend: deepsomatic
+    deepsomatic:
+      version: "1.10.0"
+      version_mismatch_policy: fail
+      unknown_version_policy: fail
+      model_type:
+        tumor_normal: PACBIO
+        tumor_only: PACBIO_TUMOR_ONLY
+      execution:
+        mode: container
+      executable:
+        path: null
+      container:
+        engine: docker
+        image: google/deepsomatic
+        tag: "1.10.0"
+        digest: null
+        extra_args: []
+      model:
+        custom_model_path: null
+        example_info_path: null
+        require_example_info: auto
+        verify_model_files: true
+      resources:
+        num_shards: null
+        cpus: null
+        memory_gb: null
+        time: null
+        scratch_gb: null
+      outputs:
+        emit_vcf: true
+        emit_gvcf: true
+        emit_intermediate_results: false
+        preserve_logs: true
+        create_pass_only_vcf: false
+      regions:
+        mode: whole_genome
+        values: []
+        file: null
+      pon:
+        enabled: false
+        path: null
+        index_path: null
+        signature: null
+        use_default_filtering: false
+      advanced:
+        extra_args: []

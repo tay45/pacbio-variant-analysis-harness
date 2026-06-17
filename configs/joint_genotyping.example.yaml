@@ -1,0 +1,84 @@
+schema_version: phase2a1.v1
+project:
+  name: example_project
+  output_root: ./results
+  research_use_only: true
+reference:
+  id: GRCh38_example
+  build: GRCh38
+  fasta: /path/to/reference.fa
+  fai: /path/to/reference.fa.fai
+  sequence_dictionary: /path/to/reference.dict
+  tandem_repeats_bed: null
+  checksum_policy: metadata
+execution:
+  backend: local
+  tool_backend: native
+  temp_root: ./tmp
+  threads: 16
+  memory_gb: 64
+  keep_temp_on_failure: true
+  cleanup_on_success: false
+  overwrite: false
+tools:
+  dataset: {backend: native, executable: dataset, version: null, container: null}
+  pbmm2: {backend: native, executable: pbmm2, version: null, container: null}
+  samtools: {backend: native, executable: samtools, version: null, container: null}
+  bgzip: {backend: native, executable: bgzip, version: null, container: null}
+  tabix: {backend: native, executable: tabix, version: null, container: null}
+  bcftools: {backend: native, executable: bcftools, version: null, container: null}
+  deepvariant:
+    backend: native
+    executable: run_deepvariant
+    version: null
+    container: null
+    model_type: PACBIO
+    num_shards: 16
+    extra_args: []
+  pbsv: {backend: native, executable: pbsv, version: null, container: null, ccs_mode: true}
+workflow:
+  perform_dataset_merge: auto
+  perform_alignment: auto
+  call_snv: true
+  call_sv: true
+  emit_gvcf: true
+  legacy_naming: false
+qc:
+  thresholds: {minimum_records: 1}
+  checksum_outputs: false
+joint_genotyping:
+  enabled: true
+  backend: glnexus
+  sample_identity_policy: strict
+  input_validation_level: header
+  glnexus:
+    executable: glnexus_cli
+    container:
+      engine: null
+      image: null
+      digest: null
+    config_name: DeepVariantWGS
+    extra_args: []
+  sharding:
+    mode: contig
+    interval_file: null
+    target_bases_per_shard: null
+    include_contigs: []
+    exclude_contigs: []
+    max_shards: null
+  output:
+    cohort_vcf_name: cohort.germline.vcf.gz
+resources:
+  joint_genotyping_shard:
+    cpus: null
+    memory_gb: null
+    time: null
+    scratch_gb: null
+  joint_genotyping_concat:
+    cpus: null
+    memory_gb: null
+    time: null
+  joint_genotyping_qc:
+    cpus: null
+    memory_gb: null
+    time: null

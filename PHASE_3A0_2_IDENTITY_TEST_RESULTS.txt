@@ -1,0 +1,11 @@
+$ <python> scripts/run_tests.py -q tests/public_release/test_repository_identity.py
+exit_code=0
+duration_seconds=0.83
+
+STDOUT
+............                                                             [100%]
+12 passed in 0.36s
+
+STDERR
+Hermetic pytest: PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+

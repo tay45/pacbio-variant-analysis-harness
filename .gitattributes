@@ -1,0 +1,15 @@
+* text=auto eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+*.py text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.json text eol=lf
+*.sh text eol=lf
+*.bat text eol=crlf
+*.bam linguist-generated=true
+*.cram linguist-generated=true
+*.fastq linguist-generated=true
+*.fq linguist-generated=true
+*.vcf.gz linguist-generated=true
+*.sif linguist-generated=true

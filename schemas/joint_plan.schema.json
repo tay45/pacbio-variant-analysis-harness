@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Variant Analysis Harness Joint Genotyping Plan",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "joint_id",
+    "joint_attempt_id",
+    "selected_sample_count",
+    "backend",
+    "shard_count",
+    "array_grouping",
+    "expected_outputs",
+    "package_version",
+    "research_use_only"
+  ],
+  "properties": {
+    "joint_id": {"type": "string", "pattern": "^[A-Za-z0-9_.-]+$"},
+    "joint_attempt_id": {"type": "string", "pattern": "^[A-Za-z0-9_.-]+$"},
+    "selected_sample_count": {"type": "integer", "minimum": 0},
+    "backend": {"const": "glnexus"},
+    "shard_count": {"type": "integer", "minimum": 0},
+    "array_grouping": {"type": "array"},
+    "expected_outputs": {"type": "object"},
+    "package_version": {"type": "string"},
+    "research_use_only": {"const": true}
+  }
+}

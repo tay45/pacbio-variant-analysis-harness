@@ -1,0 +1,14 @@
+PacBio Variant Analysis Harness Public Alpha Review Manifest
+
+Package version: 0.2.7a1
+Recommended release tag: v0.2.7-alpha.1
+Public package revision: 3A.0.2
+Repository: Tay45/pacbio-variant-analysis-harness
+Repository URL: https://github.com/Tay45/pacbio-variant-analysis-harness
+Commit identifier: not available in packaged workspace
+Test result summary: 247 passed in 23.72s
+Research-use status: research-use only; no clinical, diagnostic, treatment-decision, or regulatory validation is claimed.
+
+Identity correction:
+- Public repository title, owner, slug, URL, clone URL, citation metadata, publishing instructions, and audits use the PacBio public identity.
+- Internal Python package/import identity remains variant_analysis_harness.

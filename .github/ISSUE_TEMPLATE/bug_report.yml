@@ -1,0 +1,41 @@
+name: Bug report
+description: Report a reproducible harness issue without private data
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: "Do not attach patient data, credentials, institution-private data, or large sequencing files."
+  - type: input
+    id: version
+    attributes:
+      label: Harness version
+  - type: textarea
+    id: command
+    attributes:
+      label: Command
+      description: Paste the exact command with private paths anonymized.
+  - type: textarea
+    id: config
+    attributes:
+      label: Config summary
+  - type: textarea
+    id: error
+    attributes:
+      label: Anonymized error
+  - type: textarea
+    id: validation
+    attributes:
+      label: Validation artifact
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+  - type: dropdown
+    id: execution
+    attributes:
+      label: Execution type
+      options:
+        - mocked
+        - dry-run/planning
+        - real external tools

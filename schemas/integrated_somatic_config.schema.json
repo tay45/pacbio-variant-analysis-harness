@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "integrated_somatic_config.schema.json",
+  "title": "Integrated Somatic Configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "enabled": {"type": "boolean", "default": false},
+    "project_policy": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "required_stages": {
+          "type": "object",
+          "properties": {
+            "small_variants": {"enum": ["required", "optional", "disabled"]},
+            "structural_variants": {"enum": ["required", "optional", "disabled"]}
+          }
+        },
+        "allow_partial_success": {"type": "boolean"},
+        "include_warning_results": {"type": "boolean"},
+        "require_matching_reference": {"type": "boolean"},
+        "require_matching_subject": {"type": "boolean"},
+        "require_matching_tumor_identity": {"type": "boolean"},
+        "require_matching_normal_identity": {"type": "boolean"}
+      }
+    },
+    "relationship_analysis": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "enabled": {"type": "boolean"},
+        "window_bp": {"type": "integer", "minimum": 0},
+        "large_window_bp": {"type": "integer", "minimum": 0},
+        "include_filtered_small_variants": {"type": "boolean"},
+        "include_filtered_structural_variants": {"type": "boolean"},
+        "max_variants_per_region": {"type": ["integer", "null"], "minimum": 1}
+      }
+    },
+    "outputs": {"type": "object"},
+    "portfolio": {"type": "object"}
+  }
+}

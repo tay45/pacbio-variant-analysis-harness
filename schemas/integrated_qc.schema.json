@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2020-12/schema","$id":"integrated_qc.schema.json","type":"object","required":["overall_readiness","domains"],"properties":{"overall_readiness":{"enum":["PASS","WARN","FAIL","NOT_RUN","NOT_APPLICABLE","UNKNOWN"]},"domains":{"type":"array","items":{"type":"object"}}}}

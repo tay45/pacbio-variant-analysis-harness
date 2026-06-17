@@ -1,0 +1,11 @@
+$ <python> scripts/run_tests.py -q -k portability or public_release or package_audit
+exit_code=0
+duration_seconds=2.50
+
+STDOUT
+.............                                                            [100%]
+13 passed, 222 deselected in 1.38s
+
+STDERR
+Hermetic pytest: PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+

@@ -1,0 +1,28 @@
+name: Feature request
+description: Suggest a research-use harness improvement
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: "Do not include patient data, private paths, credentials, or institution-private details."
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem framing
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+  - type: textarea
+    id: validation
+    attributes:
+      label: Validation plan
+  - type: checkboxes
+    id: boundaries
+    attributes:
+      label: Boundaries
+      options:
+        - label: This does not require clinical claims.
+        - label: This does not require private data.
+        - label: This includes documentation and tests.

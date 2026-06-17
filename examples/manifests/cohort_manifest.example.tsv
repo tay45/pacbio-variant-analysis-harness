@@ -1,0 +1,4 @@
+sample_id	platform	input_type	input_path	additional_inputs	aligned	reference_id	read_group_sample	output_prefix	analysis	enabled	cohort_group	priority	family_id	population_group	batch_id	library_id	sex	notes
+SAMPLE_001	pacbio_hifi	aligned_bam	/data/public/example/SAMPLE_001.bam		true	ref_001	SAMPLE_001	SAMPLE_001	combined	true	group_a	0					example only
+SAMPLE_002	pacbio_hifi	unaligned_bam	/data/public/example/SAMPLE_002.unaligned.bam		false	ref_001	SAMPLE_002	SAMPLE_002	snv	true	group_a	1					example only
+SAMPLE_003	pacbio_hifi	pacbio_dataset_xml_list	/data/public/example/SAMPLE_003.part1.xml	/data/public/example/SAMPLE_003.part2.xml	false	ref_001	SAMPLE_003	SAMPLE_003	sv	false	group_b	2					disabled example

@@ -1,0 +1,10 @@
+$ <python> -c 'import pytest,sys; print(pytest.__file__); print(sys.executable)'
+exit_code=0
+local_pytest_shadow=False
+
+STDOUT
+/private/tmp/variant_analysis_harness_test_venv/lib/python3.12/site-packages/pytest/__init__.py
+<python>
+
+STDERR
+

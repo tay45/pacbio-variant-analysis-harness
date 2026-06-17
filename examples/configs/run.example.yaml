@@ -1,0 +1,74 @@
+schema_version: phase2a1.v1
+project:
+  name: example_project
+  output_root: ./results
+  research_use_only: true
+reference:
+  id: reference_001
+  build: GRCh38
+  fasta: /path/to/reference.fa
+  fai: /path/to/reference.fa.fai
+  sequence_dictionary: /path/to/reference.dict
+  tandem_repeats_bed: /path/to/tandem_repeats.bed
+  tandem_repeats_sort_policy: require_sorted
+  checksum_policy: metadata
+execution:
+  backend: local
+  tool_backend: native
+  temp_root: ./tmp
+  threads: 16
+  memory_gb: 64
+  keep_temp_on_failure: true
+  cleanup_on_success: false
+  overwrite: false
+tools:
+  dataset:
+    backend: native
+    executable: dataset
+    version: null
+    container: null
+  pbmm2:
+    backend: native
+    executable: pbmm2
+    version: null
+    container: null
+  samtools:
+    backend: native
+    executable: samtools
+    version: null
+    container: null
+  bgzip:
+    backend: native
+    executable: bgzip
+    version: null
+    container: null
+  tabix:
+    backend: native
+    executable: tabix
+    version: null
+    container: null
+  deepvariant:
+    backend: apptainer
+    executable: null
+    container: /path/to/deepvariant_1.10.0.sif
+    version: "1.10.0"
+    model_type: PACBIO
+    num_shards: 16
+    extra_args: []
+  pbsv:
+    backend: native
+    executable: pbsv
+    version: null
+    container: null
+    ccs_mode: true
+workflow:
+  perform_dataset_merge: auto
+  perform_alignment: auto
+  call_snv: true
+  call_sv: true
+  emit_gvcf: true
+  legacy_naming: false
+qc:
+  thresholds:
+    minimum_records: 1
+  checksum_outputs: false

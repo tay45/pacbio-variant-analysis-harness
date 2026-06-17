@@ -1,0 +1,194 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Variant Analysis Harness Run Config",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "project", "reference", "execution", "tools"],
+  "properties": {
+    "schema_version": {"const": "phase2a1.v1"},
+    "project": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "output_root", "research_use_only"],
+      "properties": {
+        "name": {"type": "string", "pattern": "^[A-Za-z0-9_.-]+$"},
+        "output_root": {"type": "string"},
+        "research_use_only": {"const": true}
+      }
+    },
+    "reference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "build", "fasta", "fai", "checksum_policy"],
+      "properties": {
+        "id": {"type": "string"},
+        "build": {"type": "string"},
+        "fasta": {"type": "string"},
+        "fai": {"type": "string"},
+        "sequence_dictionary": {"type": ["string", "null"]},
+        "tandem_repeats_bed": {"type": ["string", "null"]},
+        "tandem_repeats_sort_policy": {"enum": ["require_sorted", "warn_if_unsorted", "do_not_evaluate"]},
+        "checksum_policy": {"enum": ["none", "metadata", "sha256"]}
+      }
+    },
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["backend", "threads", "memory_gb"],
+      "properties": {
+        "backend": {"enum": ["local", "slurm"]},
+        "tool_backend": {"enum": ["native", "apptainer", "singularity", "docker", "conda"]},
+        "temp_root": {"type": "string"},
+        "threads": {"type": "integer", "minimum": 1},
+        "memory_gb": {"type": "integer", "minimum": 1},
+        "keep_temp_on_failure": {"type": "boolean"},
+        "cleanup_on_success": {"type": "boolean"},
+        "overwrite": {"type": "boolean"}
+        ,
+        "scratch": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {"type": "boolean"},
+            "root": {"type": ["string", "null"]},
+            "copy_inputs": {"type": "boolean"},
+            "stage_outputs_locally": {"type": "boolean"},
+            "copy_back_on_success": {"type": "boolean"},
+            "preserve_on_failure": {"type": "boolean"},
+            "allow_symlinks": {"type": "boolean"}
+          }
+        }
+      }
+    },
+    "tools": {
+      "type": "object",
+      "required": ["dataset", "pbmm2", "samtools", "deepvariant", "pbsv", "bgzip", "tabix"],
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "backend": {"enum": ["native", "apptainer", "singularity", "docker", "conda"]},
+          "executable": {"type": ["string", "null"]},
+          "version": {"type": ["string", "null"]},
+          "container": {"type": ["string", "null"]},
+          "conda_environment": {"type": ["string", "null"]},
+          "model_type": {"enum": ["PACBIO", "WGS", "WES", "HYBRID_PACBIO_ILLUMINA", null]},
+          "num_shards": {"type": ["integer", "null"], "minimum": 1},
+          "ccs_mode": {"type": "boolean"},
+          "extra_args": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "workflow": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "perform_dataset_merge": {"enum": ["auto", true, false]},
+        "perform_alignment": {"enum": ["auto", true, false]},
+        "call_snv": {"type": "boolean"},
+        "call_sv": {"type": "boolean"},
+        "emit_gvcf": {"type": "boolean"},
+        "legacy_naming": {"type": "boolean"}
+      }
+    },
+    "qc": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "thresholds": {"type": "object"},
+        "alignment": {"type": "object"},
+        "snv": {"type": "object"},
+        "sv": {"type": "object"},
+        "checksum_outputs": {"type": "boolean"}
+      }
+    },
+    "resources": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "cpus": {"type": ["integer", "null"], "minimum": 1},
+          "memory_gb": {"type": ["integer", "null"], "minimum": 1},
+          "time": {"type": ["string", "null"], "pattern": "^[0-9]+:[0-5][0-9]:[0-5][0-9]$"},
+          "scratch_gb": {"type": ["integer", "null"], "minimum": 1}
+        }
+      }
+    },
+    "slurm": {"type": "object"}
+    ,
+    "cohort": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "max_rows": {"type": ["integer", "null"], "minimum": 1}
+      }
+    },
+    "somatic": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "enabled": {"type": "boolean"},
+        "mode": {"enum": ["tumor_normal", "tumor_only"]},
+        "identity_policy": {"enum": ["strict", "warn", "explicit_mapping"]},
+        "tumor_only": {"type": "object"},
+        "normal_reuse": {"type": "object"},
+        "preflight": {"type": "object"},
+        "metadata": {"type": "object"},
+        "execution": {"type": "object"},
+        "outputs": {"type": "object"},
+        "small_variants": {"type": "object"},
+        "structural_variants": {"type": "object"},
+        "integrated": {"type": "object"},
+        "warning_pairs_active": {"type": "boolean"}
+      }
+    },
+    "joint_genotyping": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "enabled": {"type": "boolean"},
+        "backend": {"const": "glnexus"},
+        "sample_identity_policy": {"enum": ["strict", "warn", "explicit_mapping"]},
+        "input_validation_level": {"enum": ["header", "indexed_probe", "full_scan"]},
+        "allow_missing_gvcfs_for_planning": {"type": "boolean"},
+        "glnexus": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "executable": {"type": ["string", "null"]},
+            "config_name": {"type": "string"},
+            "extra_args": {"type": "array", "items": {"type": "string"}},
+            "container": {
+              "type": "object",
+              "additionalProperties": true,
+              "properties": {
+                "engine": {"type": ["string", "null"]},
+                "image": {"type": ["string", "null"]},
+                "digest": {"type": ["string", "null"]}
+              }
+            }
+          }
+        },
+        "sharding": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "mode": {"enum": ["contig", "interval_file"]},
+            "interval_file": {"type": ["string", "null"]},
+            "target_bases_per_shard": {"type": ["integer", "null"], "minimum": 1},
+            "include_contigs": {"type": "array", "items": {"type": "string"}},
+            "exclude_contigs": {"type": "array", "items": {"type": "string"}},
+            "max_shards": {"type": ["integer", "null"], "minimum": 1}
+          }
+        },
+        "output": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "cohort_vcf_name": {"type": "string"}
+          }
+        }
+      }
+    }
+  }
+}

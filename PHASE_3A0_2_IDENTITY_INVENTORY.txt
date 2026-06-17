@@ -1,0 +1,28 @@
+Phase 3A.0.2 identity inventory
+files_scanned=393
+matches_found_before_patch=21
+
+## Search Categories
+
+- obsolete short prefix: [REDACTED]
+- obsolete repository slug: [REDACTED]
+- obsolete owner/org: [REDACTED]
+
+## Match Summary Before Patch
+
+- Active metadata files requiring replacement: 5
+- Active README/test/review files requiring replacement: 3
+- Historical phase-plan files requiring review: 13
+
+## Replacement Decisions
+
+- Active repository names, URLs, clone commands, README title, citation metadata,
+  GitHub settings, publishing instructions, review manifest, and tests were
+  replaced with the PacBio public identity.
+- Active-looking historical packaging text was updated to the PacBio public
+  identity or rewritten to avoid obsolete branding.
+- Internal Python package paths using `variant_analysis_harness` were preserved.
+
+## Final Unresolved Count
+
+0 active public identity matches remain after the Phase 3A.0.2 patch.

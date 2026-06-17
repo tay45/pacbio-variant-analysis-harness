@@ -1,0 +1,11 @@
+$ <python> scripts/run_tests.py -q tests/unit/test_phase2a1_hardening.py::test_remote_ref_rejected_without_socket
+exit_code=0
+duration_seconds=0.81
+
+STDOUT
+.                                                                        [100%]
+1 passed in 0.39s
+
+STDERR
+Hermetic pytest: PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+

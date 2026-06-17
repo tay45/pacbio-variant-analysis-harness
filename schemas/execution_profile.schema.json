@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Execution Profile",
+  "type": "object",
+  "properties": {
+    "slurm": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "partition": {"type": ["string", "null"]},
+        "account": {"type": ["string", "null"]},
+        "qos": {"type": ["string", "null"]},
+        "constraint": {"type": ["string", "null"]},
+        "time": {"type": "string"},
+        "cpus_per_task": {"type": "integer", "minimum": 1},
+        "memory_gb": {"type": "integer", "minimum": 1},
+        "gres": {"type": ["string", "null"]},
+        "temporary_storage_gb": {"type": ["integer", "null"], "minimum": 1},
+        "extra_sbatch_options": {"type": "array", "items": {"type": "string"}},
+        "environment_setup": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  }
+}

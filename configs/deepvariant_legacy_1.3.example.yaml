@@ -1,0 +1,9 @@
+tools:
+  deepvariant:
+    backend: apptainer
+    executable: null
+    container: /path/to/deepvariant_1.3.0.sif
+    version: "1.3.0"
+    model_type: PACBIO
+    num_shards: 16
+    extra_args: []

@@ -1,0 +1,5 @@
+tools:
+  deepvariant:
+    backend: apptainer
+    executable: null
+    container: /path/to/deepvariant.sif

@@ -1,0 +1,15 @@
+Public package audit
+status=PASS
+
+required_root_files=28
+required_directories=10
+version=0.2.7a1
+release_tag=v0.2.7-alpha.1
+display_title=PacBio Variant Analysis Harness
+repository_owner=Tay45
+repository_name=pacbio-variant-analysis-harness
+repository_url=https://github.com/Tay45/pacbio-variant-analysis-harness
+clone_url=https://github.com/Tay45/pacbio-variant-analysis-harness.git
+obsolete_identity_matches=0
+## Errors
+None

@@ -1,0 +1,48 @@
+{
+  "contract_schema_version": 1,
+  "severus_version": "1.7",
+  "tag": "1.7",
+  "commit": "3dc316d6a3c1711d51782b597699979e329df523",
+  "directories": {
+    "all_svs": "all_SVs",
+    "somatic_svs": "somatic_SVs",
+    "plots": "plots"
+  },
+  "required_outputs": {
+    "all_vcf": "all_SVs/severus_all.vcf"
+  },
+  "conditional_required_outputs": {
+    "somatic_vcf": {
+      "path": "somatic_SVs/severus_somatic.vcf",
+      "required_when": "control_or_pon_present"
+    }
+  },
+  "optional_outputs": {
+    "all_breakpoint_clusters": "all_SVs/breakpoint_clusters.tsv",
+    "all_breakpoint_clusters_list": "all_SVs/breakpoint_clusters_list.tsv",
+    "somatic_breakpoint_clusters": "somatic_SVs/breakpoint_clusters.tsv",
+    "somatic_breakpoint_clusters_list": "somatic_SVs/breakpoint_clusters_list.tsv",
+    "all_plots_glob": "all_SVs/plots/severus_*.html",
+    "somatic_plots_glob": "somatic_SVs/plots/severus_*.html",
+    "log": "severus.log",
+    "read_quality": "read_qual.txt",
+    "read_ids": "read_ids.csv",
+    "loh": "severus_LOH.bed",
+    "collapsed_duplication": "severus_collaped_dup.bed"
+  },
+  "documentation_uncertain_outputs": {
+    "breakpoint_double_csv": "breakpoint_double.csv"
+  },
+  "unavailable_outputs": [
+    "severus_somatic.vcf.gz",
+    "severus_all.vcf.gz",
+    "breakpoints.tsv",
+    "clusters.tsv",
+    "graph.gfa"
+  ],
+  "source_paths": [
+    "severus/build_graph.py",
+    "severus/vcf_output.py",
+    "README.md"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "array_count": 1,
+  "report_size_bytes": 2177,
+  "runtime_seconds": 0.471,
+  "selected_samples": 3000,
+  "shard_count": 2
+}

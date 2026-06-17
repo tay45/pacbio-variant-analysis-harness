@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "somatic_plan.schema.json",
+  "title": "Phase 2D Somatic Plan",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "somatic_project_id",
+    "attempt_id",
+    "selected_pair_count",
+    "tumor_normal_count",
+    "tumor_only_count",
+    "pairs",
+    "pair_statuses",
+    "caller_stages_deferred",
+    "no_somatic_callers_executed",
+    "research_use_only"
+  ],
+  "properties": {
+    "somatic_project_id": {"type": "string"},
+    "attempt_id": {"type": "string"},
+    "selected_pair_count": {"type": "integer", "minimum": 0},
+    "excluded_pair_count": {"type": "integer", "minimum": 0},
+    "tumor_normal_count": {"type": "integer", "minimum": 0},
+    "tumor_only_count": {"type": "integer", "minimum": 0},
+    "pairs": {"type": "array"},
+    "pair_statuses": {"type": "array"},
+    "caller_stages_deferred": {"const": true},
+    "no_somatic_callers_executed": {"const": true},
+    "research_use_only": {"const": true}
+  }
+}

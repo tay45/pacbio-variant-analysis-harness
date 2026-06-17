@@ -1,0 +1,43 @@
+[
+  {
+    "artifact": "TEST_RESULTS.txt",
+    "duration_seconds": 54.06,
+    "exit_code": 0
+  },
+  {
+    "artifact": "TEST_DURATION_REPORT.txt",
+    "duration_seconds": 40.53,
+    "exit_code": 0
+  },
+  {
+    "artifact": "PYTEST_EXIT_VERIFICATION.txt",
+    "duration_seconds": 2.12,
+    "exit_code": 0
+  },
+  {
+    "artifact": "PYTEST_FULL_EXIT_VERIFICATION.txt",
+    "duration_seconds": 40.41,
+    "exit_code": 0
+  },
+  {
+    "artifact": "PYTEST_RESOLUTION_CHECK.txt",
+    "exit_code": 0
+  },
+  {
+    "artifact": "NETWORK_ISOLATION_TEST.txt",
+    "duration_seconds": 1.19,
+    "exit_code": 0
+  },
+  {
+    "artifact": "PORTABILITY_SCAN.txt",
+    "matches": 0,
+    "status": "PASS"
+  },
+  {
+    "artifact": "REVIEW_MANIFEST.txt"
+  },
+  {
+    "artifact": "PUBLIC_PACKAGE_AUDIT.txt",
+    "exit_code": 0
+  }
+]

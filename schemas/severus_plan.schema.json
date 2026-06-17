@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "severus_plan.schema.json",
+  "title": "Severus Somatic SV Plan",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["backend", "package_version", "research_use_only", "pair_attempt_id", "severus_contract_version", "array_group", "pairs", "blocked_pairs", "pair_statuses", "commands", "severus_config", "reference"],
+  "properties": {
+    "backend": {"const": "severus"},
+    "package_version": {"type": "string"},
+    "research_use_only": {"const": true},
+    "pair_attempt_id": {"type": "string"},
+    "severus_contract_version": {"type": "integer", "minimum": 1},
+    "array_group": {
+      "type": "object",
+      "required": ["name", "task_count", "max_concurrent"],
+      "properties": {
+        "name": {"const": "severus_pairs"},
+        "task_count": {"type": "integer", "minimum": 0},
+        "max_concurrent": {"type": "integer", "minimum": 1}
+      }
+    },
+    "pairs": {"type": "array", "items": {"type": "object"}},
+    "blocked_pairs": {"type": "array", "items": {"type": "object"}},
+    "pair_statuses": {"type": "array", "items": {"type": "object"}},
+    "commands": {"type": "array", "items": {"type": "object"}},
+    "severus_config": {"type": "object"},
+    "reference": {"type": "string"}
+  }
+}

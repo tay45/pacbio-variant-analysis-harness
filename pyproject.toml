@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "variant-analysis-harness"
+version = "0.2.7a1"
+description = "Research-use platform-aware germline SNV/SV analysis harness"
+requires-python = ">=3.10"
+readme = "README.md"
+license = {text = "Research-use software; see repository documentation"}
+dependencies = [
+  "PyYAML>=6.0",
+  "jsonschema>=4.0",
+]
+
+[project.scripts]
+variant-analysis-harness = "variant_analysis_harness.cli:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-m 'not real_tools'"
+markers = [
+  "unit: unit tests",
+  "integration_mocked: mocked integration tests",
+  "scale: synthetic scale planning tests",
+  "exit_smoke: fast non-recursive smoke tests used by the standalone exit verifier",
+  "real_tools: optional real-tool smoke tests excluded by default",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"

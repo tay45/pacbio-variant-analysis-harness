@@ -1,0 +1,58 @@
+[
+  {
+    "artifact": "TEST_RESULTS.txt",
+    "duration_seconds": 24.21,
+    "exit_code": 0
+  },
+  {
+    "artifact": "TEST_DURATION_REPORT.txt",
+    "duration_seconds": 24.17,
+    "exit_code": 0
+  },
+  {
+    "artifact": "PHASE_3A0_2_IDENTITY_TEST_RESULTS.txt",
+    "duration_seconds": 0.83,
+    "exit_code": 0
+  },
+  {
+    "artifact": "PHASE_3A0_2_PUBLIC_SELECTOR_RESULTS.txt",
+    "duration_seconds": 2.02,
+    "exit_code": 0
+  },
+  {
+    "artifact": "PYTEST_EXIT_VERIFICATION.txt",
+    "duration_seconds": 1.5,
+    "exit_code": 0
+  },
+  {
+    "artifact": "PYTEST_FULL_EXIT_VERIFICATION.txt",
+    "duration_seconds": 24.4,
+    "exit_code": 0
+  },
+  {
+    "artifact": "PYTEST_RESOLUTION_CHECK.txt",
+    "exit_code": 0
+  },
+  {
+    "artifact": "NETWORK_ISOLATION_TEST.txt",
+    "duration_seconds": 0.81,
+    "exit_code": 0
+  },
+  {
+    "artifact": "PHASE_3A0_2_FINAL_IDENTITY_SCAN.txt",
+    "findings": 0,
+    "status": "PASS"
+  },
+  {
+    "artifact": "PORTABILITY_SCAN.txt",
+    "findings": 0,
+    "status": "PASS"
+  },
+  {
+    "artifact": "PUBLIC_PACKAGE_AUDIT.txt",
+    "exit_code": 0
+  },
+  {
+    "artifact": "REVIEW_MANIFEST.txt"
+  }
+]

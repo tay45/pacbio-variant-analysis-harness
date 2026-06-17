@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2020-12/schema","$id":"integrated_provenance.schema.json","type":"object","required":["project","source_attempts","relationship_parameters"],"properties":{"project":{"type":"object"},"source_attempts":{"type":"array"},"relationship_parameters":{"type":"object"}}}

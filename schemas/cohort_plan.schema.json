@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Variant Analysis Harness Cohort Plan",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "cohort_id",
+    "cohort_attempt_id",
+    "selected_samples",
+    "excluded_samples",
+    "array_grouping",
+    "task_count",
+    "maximum_concurrency",
+    "workflow_package_version",
+    "research_use_only"
+  ],
+  "properties": {
+    "cohort_id": {"type": "string", "pattern": "^[A-Za-z0-9_.-]+$"},
+    "cohort_attempt_id": {"type": "string", "pattern": "^[A-Za-z0-9_.-]+$"},
+    "selected_samples": {"type": "array"},
+    "excluded_samples": {"type": "array"},
+    "array_grouping": {"type": "array"},
+    "task_count": {"type": "integer", "minimum": 0},
+    "maximum_concurrency": {"type": "integer", "minimum": 1},
+    "workflow_package_version": {"type": "string"},
+    "research_use_only": {"const": true}
+  }
+}

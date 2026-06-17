@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Variant Analysis Harness Cohort Manifest Row",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "sample_id",
+    "platform",
+    "input_type",
+    "input_path",
+    "additional_inputs",
+    "aligned",
+    "reference_id",
+    "read_group_sample",
+    "output_prefix",
+    "analysis",
+    "enabled",
+    "cohort_group",
+    "priority"
+  ],
+  "properties": {
+    "sample_id": {"type": "string", "pattern": "^[A-Za-z0-9_.-]+$"},
+    "platform": {"const": "pacbio_hifi"},
+    "input_type": {
+      "enum": ["aligned_bam", "unaligned_bam", "pacbio_dataset_xml", "pacbio_dataset_xml_list"]
+    },
+    "input_path": {"type": "string", "minLength": 1},
+    "additional_inputs": {"type": "string"},
+    "aligned": {"enum": ["true", "false", "True", "False", "1", "0", "yes", "no"]},
+    "reference_id": {"type": "string"},
+    "read_group_sample": {"type": "string", "pattern": "^[A-Za-z0-9_.-]+$"},
+    "output_prefix": {"type": "string", "pattern": "^[A-Za-z0-9_.-]+$"},
+    "analysis": {"enum": ["snv", "sv", "combined"]},
+    "enabled": {"enum": ["true", "false", "True", "False", "1", "0", "yes", "no"]},
+    "cohort_group": {"type": "string"},
+    "priority": {"type": "string"},
+    "family_id": {"type": "string"},
+    "population_group": {"type": "string"},
+    "batch_id": {"type": "string"},
+    "library_id": {"type": "string"},
+    "sex": {"type": "string"},
+    "notes": {"type": "string"}
+  }
+}

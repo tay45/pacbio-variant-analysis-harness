@@ -1,0 +1,68 @@
+somatic:
+  enabled: true
+  mode: tumor_normal
+  tumor_only:
+    allowed: false
+    acknowledgment_required: true
+  structural_variants:
+    enabled: true
+    backend: severus
+    severus:
+      requested_version: "1.7"
+      command_contract_version: 1
+      version_mismatch_policy: fail
+      unknown_version_policy: fail
+      execution:
+        mode: container
+      executable:
+        path: null
+      container:
+        engine: docker
+        image: severus
+        tag: "1.7"
+        digest: null
+        extra_args: []
+      mode:
+        tumor_normal: true
+        tumor_only: true
+        multi_sample: true
+      inputs:
+        require_aligned: true
+        require_coordinate_sorted: true
+        require_indexes: true
+        require_read_groups: true
+      phasing:
+        mode: auto
+        phased_vcf: null
+        phased_vcf_index: null
+        require_phased_vcf_for_haplotagged_inputs: true
+        require_hp_tags: false
+        supplementary_tag_policy: auto
+        haplotagging_method: null
+        source_tool: null
+        source_version: null
+        hp_tags: unknown
+        supplementary_hp_tags: unknown
+      parameters:
+        threads: null
+        min_support: null
+        min_mapq: null
+        min_sv_size: null
+        vaf_threshold: null
+        tin_ratio: null
+        vntr_bed: null
+        pon: null
+        pon_required_for_tumor_only: false
+        extra_args: []
+      outputs:
+        preserve_all_native_outputs: true
+        create_standardized_vcf_copy: true
+        create_pass_only_vcf: false
+        preserve_logs: true
+        preserve_intermediate: false
+      qc:
+        unknown_svtype_policy: warn
+        unknown_filter_policy: warn
+        require_bnd_mate_consistency: true
+        orphan_bnd_policy: fail
+        require_sorted_vcf: true

@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use this research-use software, please cite it using this metadata."
+type: software
+title: "PacBio Variant Analysis Harness"
+authors:
+  - family-names: "Kang"
+    given-names: "Tae Hyuk"
+repository-code: "https://github.com/Tay45/pacbio-variant-analysis-harness"
+version: "0.2.7-alpha.1"
+date-released: "2026-06-16"
+license: "MIT"
+abstract: "Research-use, platform-aware germline and somatic variant-analysis orchestration for PacBio HiFi data, with validated caller contracts, HPC planning, provenance, QC, and failure recovery."
+notes: "Prepared for release tag v0.2.7-alpha.1."

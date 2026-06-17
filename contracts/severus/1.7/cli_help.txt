@@ -1,0 +1,38 @@
+usage: severus --target-bam path [path ...] [--control-bam path [path ...]] --out-dir path [options]
+
+Verified from KolmogorovLab/Severus tag 1.7, commit 3dc316d6a3c1711d51782b597699979e329df523, severus/main.py argparse parser.
+
+Core arguments:
+  -v, --version
+  --target-bam path [path ...]       path to one or multiple target bam files, required
+  --control-bam path [path ...]      path to control bam file, optional; source enforces at most one unique control
+  --out-dir path                     output directory, required
+  -t int, --threads int              number of parallel threads
+
+Phasing/resource arguments:
+  --phasing-vcf path
+  --vntr-bed path
+  --use-supplementary-tag
+  --PON path
+
+Selected tunable arguments:
+  --min-support int
+  --min-reference-flank int
+  --bp-cluster-size int
+  --min-sv-size int
+  --min-aligned-length int
+  --max-read-error float
+  --min-mapq int
+  --TIN-ratio float
+  --control-cov-thr int
+  --vaf-thr float
+  --target-sample name [name ...]
+  --control-sample name [name ...]
+
+Unavailable in this contract:
+  --tumor-bam
+  --normal-bam
+  --reference
+  --tumor-sample
+  --normal-sample
+  --pon

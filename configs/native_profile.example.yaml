@@ -1,0 +1,7 @@
+tools:
+  pbmm2:
+    backend: native
+    executable: pbmm2
+  pbsv:
+    backend: native
+    executable: pbsv

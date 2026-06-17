@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Reference Bundle",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "build", "fasta", "fai", "checksum_policy"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[A-Za-z0-9_.-]+$"},
+    "build": {"type": "string"},
+    "fasta": {"type": "string"},
+    "fai": {"type": "string"},
+    "sequence_dictionary": {"type": ["string", "null"]},
+    "tandem_repeats_bed": {"type": ["string", "null"]},
+    "tandem_repeats_sort_policy": {"enum": ["require_sorted", "warn_if_unsorted", "do_not_evaluate"]},
+    "checksum_policy": {"enum": ["none", "metadata", "sha256"]}
+  }
+}

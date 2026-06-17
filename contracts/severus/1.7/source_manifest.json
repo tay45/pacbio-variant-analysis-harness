@@ -1,0 +1,24 @@
+{
+  "contract_schema_version": 1,
+  "official_repository": "https://github.com/KolmogorovLab/Severus",
+  "tag": "1.7",
+  "commit_sha": "3dc316d6a3c1711d51782b597699979e329df523",
+  "captured_date": "2026-06-15",
+  "inspected_source_paths": [
+    "README.md",
+    "severus/main.py",
+    "severus/build_graph.py",
+    "severus/vcf_output.py"
+  ],
+  "fixtures": [
+    "cli_help.txt",
+    "cli_contract.json",
+    "output_contract.json"
+  ],
+  "fixture_checksums_sha256": {
+    "cli_help.txt": "5413459a3e3a017a154ba2523657d1b3d4ba430eb33785dd499c003fde6bc0c8",
+    "cli_contract.json": "3fdc3eb93a8bb124ae6d757b11d476b26577a07e6a08c39cec220e931b6354d8",
+    "output_contract.json": "c110cc4e75c74b976113abbc2126130a4d32cc6d8d7e9bf23609bc053d16fa93"
+  },
+  "notes": "Normalized offline contract fixtures only; no Severus source code or binaries are committed."
+}

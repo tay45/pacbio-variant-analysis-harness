@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2020-12/schema","$id":"integrated_variant_relationship.schema.json","type":"object","required":["relationship_type"],"properties":{"relationship_type":{"type":"string"},"small_variant_key":{"type":["string","null"]},"sv_event_key":{"type":["string","null"]},"distance_bp":{"type":["integer","null"],"minimum":0}}}

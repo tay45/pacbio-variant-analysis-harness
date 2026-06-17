@@ -1,0 +1,13 @@
+schema_version: phase2a1.v1
+slurm:
+  partition: null
+  account: null
+  qos: null
+  constraint: null
+  time: "24:00:00"
+  cpus_per_task: 16
+  memory_gb: 64
+  gres: null
+  temporary_storage_gb: null
+  extra_sbatch_options: []
+  environment_setup: []

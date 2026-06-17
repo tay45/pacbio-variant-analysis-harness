@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "somatic_config.schema.json",
+  "title": "Phase 2D Somatic Configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "enabled": {"type": "boolean", "default": false},
+    "mode": {"enum": ["tumor_normal", "tumor_only"], "default": "tumor_normal"},
+    "identity_policy": {"enum": ["strict", "warn", "explicit_mapping"], "default": "strict"},
+    "tumor_only": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "allowed": {"type": "boolean", "default": false},
+        "acknowledgment_required": {"type": "boolean", "default": true},
+        "acknowledgment_text": {"type": ["string", "null"]}
+      }
+    },
+    "normal_reuse": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "allowed": {"type": "boolean", "default": false},
+        "maximum_pairs_per_normal": {"type": "integer", "minimum": 1, "default": 1}
+      }
+    },
+    "preflight": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "require_aligned_inputs": {"type": "boolean", "default": true},
+        "require_indexes": {"type": "boolean", "default": true},
+        "require_matching_reference": {"type": "boolean", "default": true},
+        "require_matching_contig_order": {"type": "boolean", "default": true},
+        "require_read_groups": {"type": "boolean", "default": true},
+        "require_sample_names": {"type": "boolean", "default": true},
+        "minimum_tumor_coverage": {"type": ["number", "null"], "minimum": 0},
+        "minimum_normal_coverage": {"type": ["number", "null"], "minimum": 0},
+        "maximum_tumor_normal_coverage_ratio": {"type": ["number", "null"], "exclusiveMinimum": 0},
+        "minimum_tumor_normal_coverage_ratio": {"type": ["number", "null"], "exclusiveMinimum": 0}
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "require_purity": {"type": "boolean", "default": false},
+        "require_ploidy": {"type": "boolean", "default": false},
+        "require_contamination_estimate": {"type": "boolean", "default": false},
+        "require_sex": {"type": "boolean", "default": false},
+        "require_source_for_values": {"type": "boolean", "default": false}
+      }
+    },
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "backend": {"enum": ["local", "interactive_hpc", "slurm"], "default": "local"},
+        "max_concurrent_pairs": {"type": "integer", "minimum": 1, "default": 1}
+      }
+    },
+    "outputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {"root": {"type": ["string", "null"]}}
+    },
+    "small_variants": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "enabled": {"type": "boolean", "default": false},
+        "backend": {"const": "deepsomatic"},
+        "deepsomatic": {"type": "object"}
+      }
+    },
+    "structural_variants": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "enabled": {"type": "boolean", "default": false},
+        "backend": {"const": "severus"},
+        "severus": {"type": "object"}
+      }
+    },
+    "integrated": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "enabled": {"type": "boolean", "default": false},
+        "project_policy": {"type": "object"},
+        "relationship_analysis": {"type": "object"},
+        "outputs": {"type": "object"},
+        "portfolio": {"type": "object"}
+      }
+    },
+    "warning_pairs_active": {"type": "boolean", "default": true}
+  }
+}

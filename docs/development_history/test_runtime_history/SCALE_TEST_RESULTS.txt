@@ -1,0 +1,8 @@
+{
+  "generated_array_count": 1,
+  "generated_task_count": 3000,
+  "peak_memory_kb_platform_dependent": 164392960,
+  "report_size_bytes": 2799,
+  "runtime_seconds": 4.628,
+  "status_aggregation_seconds": 0.512
+}

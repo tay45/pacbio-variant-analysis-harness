@@ -1,0 +1,96 @@
+schema_version: phase2a1.v1
+project:
+  name: example_project
+  output_root: ./results
+  research_use_only: true
+reference:
+  id: GRCh38_example
+  build: GRCh38
+  fasta: ./references/GRCh38.example.fa
+  fai: ./references/GRCh38.example.fa.fai
+  sequence_dictionary: ./references/GRCh38.example.dict
+  tandem_repeats_bed: null
+  checksum_policy: metadata
+execution:
+  backend: local
+  tool_backend: native
+  temp_root: ./tmp
+  threads: 2
+  memory_gb: 4
+  keep_temp_on_failure: true
+  cleanup_on_success: false
+  overwrite: false
+tools:
+  dataset: {backend: native, executable: dataset, version: null, container: null}
+  pbmm2: {backend: native, executable: pbmm2, version: null, container: null}
+  samtools: {backend: native, executable: samtools, version: null, container: null}
+  deepvariant: {backend: native, executable: deepvariant, version: null, container: null}
+  pbsv: {backend: native, executable: pbsv, version: null, container: null}
+  bgzip: {backend: native, executable: bgzip, version: null, container: null}
+  tabix: {backend: native, executable: tabix, version: null, container: null}
+somatic:
+  enabled: true
+  mode: tumor_normal
+  identity_policy: strict
+  tumor_only:
+    allowed: false
+    acknowledgment_required: true
+    acknowledgment_text: null
+  normal_reuse:
+    allowed: false
+    maximum_pairs_per_normal: 1
+  preflight:
+    require_aligned_inputs: true
+    require_indexes: true
+    require_matching_reference: true
+    require_matching_contig_order: true
+    require_read_groups: true
+    require_sample_names: true
+    minimum_tumor_coverage: null
+    minimum_normal_coverage: null
+    maximum_tumor_normal_coverage_ratio: null
+    minimum_tumor_normal_coverage_ratio: null
+  metadata:
+    require_purity: false
+    require_ploidy: false
+    require_contamination_estimate: false
+    require_sex: false
+    require_source_for_values: false
+  execution:
+    backend: local
+    max_concurrent_pairs: 10
+  outputs:
+    root: null
+  integrated:
+    enabled: false
+    project_policy:
+      required_stages:
+        small_variants: optional
+        structural_variants: optional
+      allow_partial_success: true
+      include_warning_results: false
+      require_matching_reference: true
+      require_matching_subject: true
+      require_matching_tumor_identity: true
+      require_matching_normal_identity: true
+    relationship_analysis:
+      enabled: true
+      window_bp: 10000
+      large_window_bp: 100000
+      include_filtered_small_variants: false
+      include_filtered_structural_variants: false
+      max_variants_per_region: null
+    outputs:
+      create_markdown_report: true
+      create_json_report: true
+      create_tsv_exports: true
+      create_html_report: false
+      create_recruiter_summary: true
+      create_operator_summary: true
+    portfolio:
+      enabled: true
+      include_architecture_summary: true
+      include_validation_boundaries: true
+      include_test_evidence: true
+      include_scale_evidence: true
+      include_failure_recovery_evidence: true

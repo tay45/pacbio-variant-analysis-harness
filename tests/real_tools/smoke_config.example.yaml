@@ -1,0 +1,86 @@
+schema_version: phase2a1.v1
+project:
+  name: smoke_project
+  output_root: ./smoke_results
+  research_use_only: true
+reference:
+  id: smoke_reference
+  build: user_provided
+  fasta: /path/to/tiny_reference.fa
+  fai: /path/to/tiny_reference.fa.fai
+  sequence_dictionary: /path/to/tiny_reference.dict
+  tandem_repeats_bed: /path/to/tandem_repeats.bed
+  tandem_repeats_sort_policy: require_sorted
+  checksum_policy: metadata
+execution:
+  backend: local
+  tool_backend: native
+  temp_root: ./smoke_tmp
+  threads: 4
+  memory_gb: 16
+  keep_temp_on_failure: true
+  cleanup_on_success: false
+  overwrite: false
+tools:
+  dataset:
+    backend: native
+    executable: dataset
+    version: null
+    container: null
+  pbmm2:
+    backend: native
+    executable: pbmm2
+    version: null
+    container: null
+  samtools:
+    backend: native
+    executable: samtools
+    version: null
+    container: null
+  deepvariant:
+    backend: apptainer
+    executable: null
+    container: /path/to/deepvariant.sif
+    version: null
+    model_type: PACBIO
+    num_shards: 4
+    extra_args: []
+  pbsv:
+    backend: native
+    executable: pbsv
+    version: null
+    container: null
+    ccs_mode: true
+  bgzip:
+    backend: native
+    executable: bgzip
+    version: null
+    container: null
+  tabix:
+    backend: native
+    executable: tabix
+    version: null
+    container: null
+workflow:
+  perform_dataset_merge: auto
+  perform_alignment: auto
+  call_snv: true
+  call_sv: true
+  emit_gvcf: true
+  legacy_naming: false
+qc:
+  alignment:
+    minimum_mapped_fraction: 0.90
+    minimum_mean_depth: null
+    maximum_low_mapq_fraction: null
+  snv:
+    minimum_total_records: 1
+    minimum_pass_fraction: null
+    titv_warn_low: null
+    titv_warn_high: null
+  sv:
+    minimum_total_records: 0
+    maximum_low_support_fraction: null
+  thresholds:
+    minimum_records: 1
+  checksum_outputs: false

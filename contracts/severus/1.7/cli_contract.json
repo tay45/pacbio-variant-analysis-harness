@@ -1,0 +1,60 @@
+{
+  "contract_schema_version": 1,
+  "severus_version": "1.7",
+  "tag": "1.7",
+  "commit": "3dc316d6a3c1711d51782b597699979e329df523",
+  "entry_point": "severus",
+  "contract_version": 1,
+  "flags": {
+    "target_bam": "--target-bam",
+    "control_bam": "--control-bam",
+    "out_dir": "--out-dir",
+    "threads": "--threads",
+    "threads_short": "-t",
+    "phasing_vcf": "--phasing-vcf",
+    "vntr_bed": "--vntr-bed",
+    "pon": "--PON",
+    "min_support": "--min-support",
+    "vaf_threshold": "--vaf-thr",
+    "tin_ratio": "--TIN-ratio",
+    "min_mapq": "--min-mapq",
+    "min_sv_size": "--min-sv-size",
+    "use_supplementary_tag": "--use-supplementary-tag",
+    "target_sample": "--target-sample",
+    "control_sample": "--control-sample"
+  },
+  "unavailable_flags": [
+    "--tumor-bam",
+    "--normal-bam",
+    "--reference",
+    "--tumor-sample",
+    "--normal-sample",
+    "--pon"
+  ],
+  "protected_flags": [
+    "--target-bam",
+    "--control-bam",
+    "--out-dir",
+    "--threads",
+    "-t",
+    "--phasing-vcf",
+    "--vntr-bed",
+    "--PON",
+    "--use-supplementary-tag",
+    "--target-sample",
+    "--control-sample"
+  ],
+  "mode_support": {
+    "tumor_normal": true,
+    "tumor_only": true,
+    "multiple_targets": true,
+    "maximum_unique_controls": 1
+  },
+  "supplementary_tag": {
+    "supported": true,
+    "flag": "--use-supplementary-tag"
+  },
+  "source_paths": [
+    "severus/main.py"
+  ]
+}

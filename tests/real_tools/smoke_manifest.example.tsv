@@ -1,0 +1,2 @@
+sample_id	platform	input_type	input_path	additional_inputs	aligned	reference_id	read_group_sample	output_prefix
+SMOKE_SAMPLE	pacbio_hifi	aligned_bam	/path/to/tiny.aligned.bam		true	smoke_reference	SMOKE_SAMPLE	SMOKE_SAMPLE

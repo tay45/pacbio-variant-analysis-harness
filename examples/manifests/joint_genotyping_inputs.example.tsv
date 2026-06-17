@@ -1,0 +1,3 @@
+sample_id	gvcf_path	reference_id	reference_signature	source_cohort_id	source_cohort_attempt_id	source_sample_attempt_id	enabled
+SAMPLE_001	/data/public/example/SAMPLE_001.g.vcf.gz	ref_001	refsig_example	COHORT_001	cohort_attempt_001	attempt_001	true
+SAMPLE_002	/data/public/example/SAMPLE_002.g.vcf.gz	ref_001	refsig_example	COHORT_001	cohort_attempt_001	attempt_001	true

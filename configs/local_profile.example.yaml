@@ -1,0 +1,7 @@
+execution:
+  backend: local
+  temp_root: ./tmp
+  threads: 16
+  memory_gb: 64
+  keep_temp_on_failure: true
+  cleanup_on_success: false

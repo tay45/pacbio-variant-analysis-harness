@@ -1,0 +1,2 @@
+sample_id	platform	input_type	input_path	additional_inputs	aligned	reference_id	read_group_sample	output_prefix
+SAMPLE_001	pacbio_hifi	aligned_bam	/path/to/sample.aligned.bam		true	GRCh38_example	SAMPLE_001	SAMPLE_001

@@ -1,0 +1,11 @@
+$ <python> scripts/run_tests.py -q tests/public_release/test_public_audit_self_reference.py
+exit_code=0
+duration_seconds=2.96
+
+STDOUT
+..........                                                               [100%]
+10 passed in 1.88s
+
+STDERR
+Hermetic pytest: PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+

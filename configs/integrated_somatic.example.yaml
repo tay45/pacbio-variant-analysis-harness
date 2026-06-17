@@ -1,0 +1,35 @@
+schema_version: phase2a1.v1
+somatic:
+  integrated:
+    enabled: false
+    project_policy:
+      required_stages:
+        small_variants: optional
+        structural_variants: optional
+      allow_partial_success: true
+      include_warning_results: false
+      require_matching_reference: true
+      require_matching_subject: true
+      require_matching_tumor_identity: true
+      require_matching_normal_identity: true
+    relationship_analysis:
+      enabled: true
+      window_bp: 10000
+      large_window_bp: 100000
+      include_filtered_small_variants: false
+      include_filtered_structural_variants: false
+      max_variants_per_region: null
+    outputs:
+      create_markdown_report: true
+      create_json_report: true
+      create_tsv_exports: true
+      create_html_report: false
+      create_recruiter_summary: true
+      create_operator_summary: true
+    portfolio:
+      enabled: true
+      include_architecture_summary: true
+      include_validation_boundaries: true
+      include_test_evidence: true
+      include_scale_evidence: true
+      include_failure_recovery_evidence: true

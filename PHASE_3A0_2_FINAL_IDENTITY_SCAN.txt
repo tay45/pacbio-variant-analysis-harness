@@ -1,0 +1,13 @@
+Phase 3A.0.2 final identity scan
+status=PASS
+files_scanned=396
+active_public_identity_matches=0
+historical_retained_matches=0
+public_title=PacBio Variant Analysis Harness
+repository_owner=Tay45
+repository_name=pacbio-variant-analysis-harness
+repository_url=https://github.com/Tay45/pacbio-variant-analysis-harness
+clone_url=https://github.com/Tay45/pacbio-variant-analysis-harness.git
+
+## Findings
+None

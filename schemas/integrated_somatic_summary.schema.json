@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2020-12/schema","$id":"integrated_somatic_summary.schema.json","type":"object","required":["schema_version","pair_count"],"properties":{"schema_version":{"type":"string"},"pair_count":{"type":"integer","minimum":0},"status_counts":{"type":"object"}}}

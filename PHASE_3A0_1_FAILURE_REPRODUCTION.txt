@@ -1,0 +1,38 @@
+Phase 3A.0.1 failure reproduction
+status=REPRODUCED
+
+Command:
+python scripts/run_tests.py -q
+
+Execution location:
+/private/tmp independent extraction of the supplied Phase 3A.0 public ZIP.
+
+Actual exit code:
+1
+
+Actual test count:
+224 passed, 1 failed
+
+Exact failing test:
+tests/unit/test_safety_slurm_portability.py::test_no_prohibited_terms_outside_legacy
+
+Files detected by the failing portability test:
+- PUBLIC_RELEASE_AUDIT.txt
+- scripts/audit_public_repository.py
+
+Prohibited categories detected:
+- legacy cluster-name category
+- institution-name category
+- internal-host category
+- internal-path category A
+- internal-path category B
+
+Root cause:
+The public audit scanner stored sensitive scan values as contiguous source
+strings and wrote them verbatim into the public release audit artifact. The
+portability test correctly scans public files outside legacy material, so it
+reported the scanner and audit report as active public findings.
+
+Notes:
+The failure is packaging-only. No analytical source, caller contracts, schemas,
+or workflow semantics failed.

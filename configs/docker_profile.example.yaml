@@ -1,0 +1,5 @@
+tools:
+  deepvariant:
+    backend: docker
+    executable: null
+    container: google/deepvariant:1.10.0
