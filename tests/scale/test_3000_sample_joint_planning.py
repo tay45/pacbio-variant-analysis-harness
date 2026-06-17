@@ -64,7 +64,9 @@ def test_3000_sample_joint_planning(tmp_path, tiny_reference):
     }
     payload = json.dumps(metrics, indent=2, sort_keys=True) + "\n"
     (tmp_path / "JOINT_SCALE_TEST_RESULTS.txt").write_text(payload, encoding="utf-8")
-    (Path.cwd() / "JOINT_SCALE_TEST_RESULTS.txt").write_text(payload, encoding="utf-8")
+    evidence_dir = Path.cwd() / "docs" / "validation" / "evidence" / "scale_tests"
+    evidence_dir.mkdir(parents=True, exist_ok=True)
+    (evidence_dir / "JOINT_SCALE_TEST_RESULTS.txt").write_text(payload, encoding="utf-8")
     assert plan["selected_sample_count"] == 3000
     assert plan["shard_count"] == 2
     assert runtime < 20

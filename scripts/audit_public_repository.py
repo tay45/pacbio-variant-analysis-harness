@@ -34,7 +34,8 @@ REQUIRED_DIRS = {
     ".github", "configs", "contracts", "docs", "examples", "schemas", "scripts",
     "tests", "variant_analysis_harness", "legacy",
 }
-FORBIDDEN_DIRS = {".git", ".venv", "venv", "env", "__pycache__", ".pytest_cache", ".mypy_cache", ".ruff_cache", "work", "outputs"}
+IGNORED_GENERATED_DIRS = {".git", "__pycache__", ".pytest_cache", ".mypy_cache", ".ruff_cache"}
+FORBIDDEN_DIRS = {".venv", "venv", "env", "work", "outputs"}
 FORBIDDEN_SUFFIXES = {".bam", ".bai", ".cram", ".crai", ".sam", ".fastq", ".fq", ".sif", ".img", ".zip", ".tar", ".gz"}
 PRIVATE_PATTERNS = [
     {"label": "institution-name pattern", "value": "City" + " of " + "Hope"},
@@ -77,10 +78,13 @@ ROOT_ARTIFACT_PREFIXES = ("PHASE_", "TEST_", "PYTEST_", "PUBLIC_", "DOCUMENTATIO
 def iter_files(root: Path = ROOT):
     for path in root.rglob("*"):
         rel = path.relative_to(root)
-        if any(part in FORBIDDEN_DIRS for part in rel.parts):
+        if is_generated_metadata(rel):
             continue
         if path.is_file():
             yield path
+
+def is_generated_metadata(rel: Path) -> bool:
+    return any(part in IGNORED_GENERATED_DIRS or part.endswith(".egg-info") for part in rel.parts)
 
 def audit_links(root: Path = ROOT) -> tuple[list[str], list[str]]:
     checked, broken = [], []
@@ -128,7 +132,7 @@ def audit_package(root: Path = ROOT) -> list[str]:
     errors.extend(f"missing root directory: {item}" for item in missing_dirs)
     for path in root.rglob("*"):
         rel = path.relative_to(root)
-        if ".git" in rel.parts:
+        if is_generated_metadata(rel):
             continue
         if any(part in FORBIDDEN_DIRS for part in rel.parts):
             errors.append(f"forbidden directory entry: {rel}")

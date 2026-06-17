@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
+from scripts import audit_public_repository as audit
+
 ROOT = Path(__file__).resolve().parents[2]
 
 ALLOWED_ROOT_FILES = {
@@ -92,3 +94,16 @@ def test_no_required_evidence_was_deleted():
     ]
     missing = [path for path in required if not (ROOT / path).exists()]
     assert missing == []
+
+
+def test_public_audit_metadata_policy_is_narrow():
+    ignored = [
+        Path(".git/config"),
+        Path(".pytest_cache/v/cache/nodeids"),
+        Path("variant_analysis_harness/__pycache__/cli.pyc"),
+        Path("variant_analysis_harness.egg-info/PKG-INFO"),
+    ]
+    for rel in ignored:
+        assert audit.is_generated_metadata(rel), rel
+    assert not audit.is_generated_metadata(Path("work/transient.txt"))
+    assert not audit.is_generated_metadata(Path("outputs/package.zip"))

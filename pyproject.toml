@@ -14,6 +14,11 @@ dependencies = [
   "jsonschema>=4.0",
 ]
 
+[project.optional-dependencies]
+test = [
+  "pytest>=7",
+]
+
 [project.scripts]
 variant-analysis-harness = "variant_analysis_harness.cli:main"
 

@@ -62,7 +62,9 @@ def test_3000_sample_planning(tmp_path, tiny_reference, tiny_inputs):
     }
     payload = json.dumps(results, indent=2, sort_keys=True) + "\n"
     (tmp_path / "SCALE_TEST_RESULTS.txt").write_text(payload, encoding="utf-8")
-    (Path.cwd() / "SCALE_TEST_RESULTS.txt").write_text(payload, encoding="utf-8")
+    evidence_dir = Path.cwd() / "docs" / "validation" / "evidence" / "scale_tests"
+    evidence_dir.mkdir(parents=True, exist_ok=True)
+    (evidence_dir / "SCALE_TEST_RESULTS.txt").write_text(payload, encoding="utf-8")
     assert plan["task_count"] == 3000
     assert len(plan["array_grouping"]) == 1
     assert status_summary["status_counts"]["pending"] == 3000
