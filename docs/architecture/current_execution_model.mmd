@@ -1,0 +1,79 @@
+flowchart TD
+  TITLE["PacBio Variant Analysis Harness: Current Execution Model"]
+  SUBTITLE["Validation and planning precede local execution or Slurm planning; DeepVariant and pbsv keep separate germline output-validation lineages."]
+
+  subgraph TOP["Top layer: validation, planning, and execution backend"]
+    A["Manifest + Configuration"] --> B["Schema / Identity / Reference / Preflight Validation"]
+    B --> C["Stage Graph + Command / Resource Planning"]
+    C --> D["Execution Backend selected before caller stages"]
+    D --> E["Local runner to caller execution"]
+    D --> F["Slurm script / array planning to planned Slurm stage entry"]
+    E --> G1["Caller execution local runner path"]
+    F --> G2["Planned Slurm stage entry script or array plan path"]
+    G1 --> G["Planned caller-family dispatch"]
+    G2 --> G
+  end
+
+  subgraph GERMLINE["Middle layer: germline single-sample and cohort paths"]
+    G --> H1["DeepVariant germline SNV/indel"]
+    G --> H2["pbsv discover + call germline SV"]
+
+    H1 --> H3["Caller-native VCF/gVCF outputs"]
+    H3 --> H5["DeepVariant VCF/gVCF output validation + SNV QC"]
+
+    subgraph COHORT["Germline cohort branch: DeepVariant gVCF lineage only"]
+      H5 --> H6["Validated per-sample DeepVariant gVCFs"]
+      H6 --> H7["Joint input manifest validation"]
+      H7 --> H8["Sample/reference compatibility checks"]
+      H8 --> H9["Sharding"]
+      H9 --> H10["GLnexus command planning"]
+      H10 --> H11["Slurm shard-array planning"]
+      H11 --> H12["Concat + joint QC/report/rerun planning"]
+    end
+
+    subgraph PBSV["Germline SV branch: pbsv lineage"]
+      H2 --> H4["Caller-native svsig and SV VCF"]
+      H4 --> H13["pbsv output validation + SV QC"]
+      H13 --> H14["Germline sample reporting / validated germline SV outputs"]
+    end
+  end
+
+  subgraph SOMATIC["Middle layer: somatic caller path"]
+    G --> I1["DeepSomatic somatic SNV/indel"]
+    G --> I2["Severus somatic SV"]
+    I1 --> I3["Caller-native VCF/gVCF outputs"]
+    I2 --> I4["Caller-native SV/BND native outputs"]
+    I3 --> I5["Caller-specific validation + QC"]
+    I4 --> I5
+    I5 --> I6["Validated DeepSomatic and Severus outputs"]
+    I6 --> I7["Integrated somatic evidence reporting"]
+  end
+
+  subgraph LIFE["Lifecycle controls"]
+    L1["Status and logs"]
+    L2["Resolved config"]
+    L3["Provenance"]
+    L4["Attempt preservation"]
+    L5["Resume"]
+    L6["Rerun manifests"]
+    L7["Failure isolation"]
+    LNOTE["Supporting controls around stages and attempts."]
+  end
+
+  FOOTER1["Only validated DeepVariant gVCFs feed joint input validation and GLnexus planning; pbsv remains a separate germline SV/reporting lineage."]
+  FOOTER2["Integrated somatic evidence remains downstream of validated DeepSomatic and Severus outputs."]
+
+  classDef input fill:#e8f4fd,stroke:#2f6f9f,color:#102a43
+  classDef planning fill:#eef7ec,stroke:#3b7d3a,color:#173b18
+  classDef backend fill:#fff4d6,stroke:#a16a00,color:#493200
+  classDef germline fill:#f1ecff,stroke:#6a4fb3,color:#25194d
+  classDef somatic fill:#ffecec,stroke:#b34f4f,color:#4d1919
+  classDef validation fill:#eaf7f4,stroke:#2e7d70,color:#173d38
+  classDef lifecycle fill:#f7f7f8,stroke:#667085,color:#222
+  class A,B input
+  class C planning
+  class D,E,F,G,G1,G2 backend
+  class H1,H2,H3,H4,H6,H7,H8,H9,H10,H11,H12,H14 germline
+  class H5,H13,I5 validation
+  class I1,I2,I3,I4,I6,I7 somatic
+  class L1,L2,L3,L4,L5,L6,L7,LNOTE lifecycle

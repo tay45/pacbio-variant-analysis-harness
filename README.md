@@ -40,31 +40,22 @@ The current implementation targets PacBio workflows. Illumina and Oxford Nanopor
 
 ## Architecture At A Glance
 
-```mermaid
-flowchart TD
-  A["Input validation"] --> B["Manifest/config resolution"]
-  B --> C["Germline branch"]
-  C --> C1["DeepVariant germline SNV/indel"]
-  C --> C2["pbsv germline SV"]
-  C --> C3["GLnexus joint-genotyping planning"]
-  B --> D["Somatic branch"]
-  D --> D1["Tumor-normal preflight"]
-  D --> D2["DeepSomatic somatic SNV/indel"]
-  D --> D3["Severus somatic SV"]
-  D --> D4["Integrated somatic evidence"]
-  C1 --> E["Caller-native outputs"]
-  C2 --> E
-  C3 --> F["Validated derived outputs"]
-  D2 --> E
-  D3 --> E
-  D4 --> F
-  E --> G["QC / validation / provenance"]
-  F --> G
-  G --> H["Local or Slurm execution planning"]
-  H --> I["Status / rerun / reports"]
-  I --> J["Attempt preservation and failure isolation"]
-  J --> K["Synthetic/mocked validation boundary"]
-```
+The harness resolves manifests and configuration first, validates identity and
+reference assumptions, then builds deterministic stage graphs and command plans.
+Execution is a backend choice: local runs execute stages directly, while Slurm
+commands generate reviewable scripts or arrays that invoke the same planned
+stages. Caller outputs remain caller-native; validation, QC, provenance,
+reporting, and rerun records are layered around those outputs.
+
+![PacBio Variant Analysis Harness architecture](docs/architecture/current_execution_model.svg)
+
+Publication figure: [current_execution_model.svg](docs/architecture/current_execution_model.svg).  
+Raster export: [current_execution_model.png](docs/architecture/current_execution_model.png).  
+Logical Mermaid reference: [current_execution_model.mmd](docs/architecture/current_execution_model.mmd).
+
+The SVG is the authoritative visual source. The Mermaid file documents the
+architecture relationships, but it is not intended to reproduce the exact
+publication layout or styling of the SVG.
 
 See [system architecture](docs/architecture/system_architecture.md).
 
