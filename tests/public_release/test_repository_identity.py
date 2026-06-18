@@ -25,7 +25,7 @@ def _active_public_files() -> list[Path]:
         rel = path.relative_to(ROOT)
         if not path.is_file():
             continue
-        if any(part in {"legacy", ".pytest_cache", "__pycache__"} for part in rel.parts):
+        if any(part in {".git", "legacy", ".pytest_cache", "__pycache__"} for part in rel.parts):
             continue
         if path.suffix.lower() in {".pyc", ".png", ".jpg", ".jpeg"}:
             continue
